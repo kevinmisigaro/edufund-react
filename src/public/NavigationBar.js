@@ -7,47 +7,44 @@ export default function NavigationBar() {
   return (
     <Navbar bg="transparent" fixed="top" expand="lg">
       <Container>
-        <Navbar.Brand href="/">
+        <Navbar.Brand as={Link} to="/">
           <img src={logo} style={{ maxWidth: "100px" }} alt="logo" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link>
-              <Link
-                to="/"
-                style={{
-                  fontWeight: "bold",
-                  color: "white",
-                  textDecoration: "none",
-                }}
-              >
-                Home
-              </Link>
+            <Nav.Link
+              as={Link}
+              to="/"
+              style={{
+                fontWeight: "bold",
+                color: "white",
+                textDecoration: "none",
+              }}
+            >
+              Home
             </Nav.Link>
-            <Nav.Link>
-              <Link
-                to="/students"
-                style={{
-                  fontWeight: "bold",
-                  color: "white",
-                  textDecoration: "none",
-                }}
-              >
-                Students
-              </Link>
+            <Nav.Link
+              as={Link}
+              to="/students"
+              style={{
+                fontWeight: "bold",
+                color: "white",
+                textDecoration: "none",
+              }}
+            >
+              Students
             </Nav.Link>
-            <Nav.Link>
-              <Link
-                to="/donors"
-                style={{
-                  fontWeight: "bold",
-                  color: "white",
-                  textDecoration: "none",
-                }}
-              >
-                Donors
-              </Link>
+            <Nav.Link
+              as={Link}
+              to="/donors"
+              style={{
+                fontWeight: "bold",
+                color: "white",
+                textDecoration: "none",
+              }}
+            >
+              Donors
             </Nav.Link>
             <NavDropdown
               className="text-white"
@@ -58,21 +55,19 @@ export default function NavigationBar() {
               }
               id="basic-nav-dropdown"
             >
-              <NavDropdown.Item>
-                <Link
-                  to="/login"
-                  style={{ color: "black", textDecoration: "none" }}
-                >
-                  Login
-                </Link>
+              <NavDropdown.Item
+                as={Link}
+                to="/login"
+                style={{ color: "black", textDecoration: "none" }}
+              >
+                Login
               </NavDropdown.Item>
-              <NavDropdown.Item>
-                <Link
-                  to="/register"
-                  style={{ color: "black", textDecoration: "none" }}
-                >
-                  Sign up
-                </Link>
+              <NavDropdown.Item
+                as={Link}
+                to="/register"
+                style={{ color: "black", textDecoration: "none" }}
+              >
+                Sign up
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>

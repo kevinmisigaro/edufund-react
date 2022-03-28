@@ -12,15 +12,13 @@ export default function Landing() {
       <Hero />
 
       <div className="container py-5">
-        <div className="text-center">
-          <h3 style={{ fontWeight: "bold" }}>BUILDING AFRICA'S FUTURE</h3>
-        </div>
-        <div className="row mt-4">
+        <div className="row mt-2">
           <div className="col-md-6 mb-3">
             <img src={img} style={{ maxWidth: "100%" }} alt="..." />
           </div>
-          <div className="col-md-6 mb-3">
-            <p style={{ textAlign: "left" }}>
+          <div className="col-md-6 mb-3" style={{ textAlign: "justify" }}>
+            <h3 style={{ fontWeight: "bold" }}>BUILDING AFRICA'S FUTURE</h3>
+            <p>
               EduFund is a crowdfunding platform that enables underserved
               African youths to raise funding for their higher education.
               EduFUND is the first decentralized future-value education funding

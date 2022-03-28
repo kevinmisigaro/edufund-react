@@ -1,6 +1,7 @@
 import React from "react";
 import NavigationBar from "../NavigationBar";
 import bg from '../../assets/img/students-caps-up-50.png'
+import { Link } from "react-router-dom";
 
 export default function Login() {
   return (
@@ -27,12 +28,13 @@ export default function Login() {
                 </div>
 
                 <div className="d-grid mt-4">
-                  <button
+                  <Link
                     className="btn btn-primary"
+                    to="/dashboard/fundraisers"
                     style={{ fontWeight: "bold" }}
                   >
                     LOG IN
-                  </button>
+                  </Link>
                 </div>
               </div>
             </form>
