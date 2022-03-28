@@ -18,10 +18,10 @@ export default function Students() {
         }}
       >
         <div
-          className="container py-5"
-          style={{ width: "60%", textAlign: "left" }}
+          className="container"
+          style={{ width: "60%", textAlign: "left",  padding: "150px 0" }}
         >
-          <h3 style={{ fontWeight: "bold", paddingTop: "120px" }}>
+          <h3 style={{ fontWeight: "bold" }}>
             LIVE YOUR DREAM WITH EDUFUND
           </h3>
           <br />
@@ -57,7 +57,7 @@ export default function Students() {
             </p>
           </div>
           <div className="col-md-6">
-            <img src={img} style={{ maxWidth: "25rem" }} />
+            <img src={img} style={{ maxWidth: "100%" }} alt="..." />
           </div>
         </div>
       </div>

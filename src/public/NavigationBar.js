@@ -1,5 +1,6 @@
 import React from "react";
 import { Nav, Navbar, Container, NavDropdown } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import logo from "../assets/img/edufund-logo.png";
 
 export default function NavigationBar() {
@@ -7,25 +8,46 @@ export default function NavigationBar() {
     <Navbar bg="transparent" fixed="top" expand="lg">
       <Container>
         <Navbar.Brand href="/">
-          <img src={logo} style={{ maxWidth: "100px" }} />
+          <img src={logo} style={{ maxWidth: "100px" }} alt="logo" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <Nav.Link href="/" style={{ fontWeight: "bold", color: "white" }}>
-              Home
+            <Nav.Link>
+              <Link
+                to="/"
+                style={{
+                  fontWeight: "bold",
+                  color: "white",
+                  textDecoration: "none",
+                }}
+              >
+                Home
+              </Link>
             </Nav.Link>
-            <Nav.Link
-              href="/students"
-              style={{ fontWeight: "bold", color: "white" }}
-            >
-              Students
+            <Nav.Link>
+              <Link
+                to="/students"
+                style={{
+                  fontWeight: "bold",
+                  color: "white",
+                  textDecoration: "none",
+                }}
+              >
+                Students
+              </Link>
             </Nav.Link>
-            <Nav.Link
-              href="/donors"
-              style={{ fontWeight: "bold", color: "white" }}
-            >
-              Donors
+            <Nav.Link>
+              <Link
+                to="/donors"
+                style={{
+                  fontWeight: "bold",
+                  color: "white",
+                  textDecoration: "none",
+                }}
+              >
+                Donors
+              </Link>
             </Nav.Link>
             <NavDropdown
               className="text-white"
@@ -36,8 +58,22 @@ export default function NavigationBar() {
               }
               id="basic-nav-dropdown"
             >
-              <NavDropdown.Item href="#action/3.1">Login</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Sign up</NavDropdown.Item>
+              <NavDropdown.Item>
+                <Link
+                  to="/login"
+                  style={{ color: "black", textDecoration: "none" }}
+                >
+                  Login
+                </Link>
+              </NavDropdown.Item>
+              <NavDropdown.Item>
+                <Link
+                  to="/register"
+                  style={{ color: "black", textDecoration: "none" }}
+                >
+                  Sign up
+                </Link>
+              </NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>

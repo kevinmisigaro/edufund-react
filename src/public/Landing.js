@@ -16,10 +16,10 @@ export default function Landing() {
           <h3 style={{ fontWeight: "bold" }}>BUILDING AFRICA'S FUTURE</h3>
         </div>
         <div className="row mt-4">
-          <div className="col-md-6">
-            <img src={img} style={{ maxWidth: "25rem" }} />
+          <div className="col-md-6 mb-3">
+            <img src={img} style={{ maxWidth: "100%" }} alt="..." />
           </div>
-          <div className="col-md-6">
+          <div className="col-md-6 mb-3">
             <p style={{ textAlign: "left" }}>
               EduFund is a crowdfunding platform that enables underserved
               African youths to raise funding for their higher education.
@@ -37,7 +37,7 @@ export default function Landing() {
         </div>
       </div>
 
-      <Footer/>
+      <Footer />
     </>
   );
 }
