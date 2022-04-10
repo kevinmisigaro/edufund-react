@@ -34,12 +34,7 @@ export default function Landing() {
 
         <div className="row">
           {fundraisers.length > 0 ? (
-            fundraisers.map((x) => <>
-            <FundraiserCard fundraiser={x} key={x.id} />
-            <FundraiserCard fundraiser={x} key={x.id} />
-            <FundraiserCard fundraiser={x} key={x.id} />
-            <FundraiserCard fundraiser={x} key={x.id} />
-          </>)
+            fundraisers.map((x) => <FundraiserCard fundraiser={x} key={x.id} />)
           ) : (
             <div className="col-md-12 text-center mt-3">
               <p>
@@ -56,12 +51,7 @@ export default function Landing() {
         <div className="row">
           {fundraisers.length > 0 ? (
             fundraisers.map((x) => (
-            <>
               <FundraiserCard fundraiser={x} key={x.id} />
-              <FundraiserCard fundraiser={x} key={x.id} />
-              <FundraiserCard fundraiser={x} key={x.id} />
-              <FundraiserCard fundraiser={x} key={x.id} />
-            </>
             ))
           ) : (
             <div className="col-md-12 text-center mt-3">
