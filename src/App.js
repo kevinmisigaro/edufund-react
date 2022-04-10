@@ -9,6 +9,13 @@ import DashboardHome from './dashboard/DashboardHome';
 import StudentFundraisers from './dashboard/StudentFundraisers';
 import StudentDonations from './dashboard/StudentDonations';
 import AccountSettings from './dashboard/AccountSettings';
+import NewFundraiser from './dashboard/NewFundraiser';
+import FundraiserSuccess from './dashboard/FundraiserSuccess';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import FundraiserDetails from './public/FundraiserDetails';
+import StudentFundraiserDetails from './dashboard/StudentFundraiserDetails';
+import AllFundraisers from './public/AllFundraisers';
 
 function App() {
   return (
@@ -19,12 +26,18 @@ function App() {
         <Route path="/donors" element={<Donors/>} />
         <Route path='/login' element={<Login/>} />
         <Route path='/register' element={<Register/>} />
+        <Route path='fundraiser/:id' element={<FundraiserDetails/>} />
+        <Route path="/allfundraisers" element={<AllFundraisers/>} />
         <Route path='/dashboard' element={<DashboardHome/>}>
           <Route path='fundraisers' element={<StudentFundraisers/>} />
           <Route path='donations' element={<StudentDonations/>} />
           <Route path='settings' element={<AccountSettings/>} />
+          <Route path='newfundraiser' element={<NewFundraiser/>} />
+          <Route path="funddetails/:id" element={<StudentFundraiserDetails />} />
+          <Route path='fundraisersuccess' element={<FundraiserSuccess/>} />
         </Route>
       </Routes>
+      <ToastContainer/>
     </div>
   );
 }

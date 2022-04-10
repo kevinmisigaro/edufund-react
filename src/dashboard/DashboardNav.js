@@ -1,9 +1,36 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { Container, Navbar, NavDropdown, Nav } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/img/edufund-logo.png";
 
 export default function DashboardNav() {
+  const navigate = useNavigate();
+  const [logoutLoading, setLogout] = useState(false);
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    setUser(JSON.parse(localStorage.getItem("user")));
+  }, []);
+
+  const handleLogout = () => {
+    setLogout(true);
+    axios.defaults.headers.common[
+      "Authorization"
+    ] = `Bearer ${localStorage.getItem("token")}`;
+    axios
+      .post(`${process.env.REACT_APP_API_URL}/logout`)
+      .then(() => {
+        localStorage.clear();
+        setLogout(false);
+        navigate("/");
+      })
+      .catch((err) => {
+        setLogout(false);
+        console.log(err);
+      });
+  };
+
   return (
     <Navbar bg="light" expand="lg">
       <Container>
@@ -13,7 +40,10 @@ export default function DashboardNav() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <NavDropdown title="Kevin" id="basic-nav-dropdown">
+            <NavDropdown
+              title={<span>{user.name}</span>}
+              id="basic-nav-dropdown"
+            >
               <NavDropdown.Item as={Link} to="fundraisers">
                 Fundraisers
               </NavDropdown.Item>
@@ -24,7 +54,10 @@ export default function DashboardNav() {
                 Account settings
               </NavDropdown.Item>
               <NavDropdown.Item as={Link} to="/">
-                Sign out
+                Go Home
+              </NavDropdown.Item>
+              <NavDropdown.Item onClick={handleLogout}>
+                {logoutLoading ? "Logging out" : "Logout"}
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
