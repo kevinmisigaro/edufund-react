@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <div
       className="container"
-      style={{ marginTop: "3rem", marginBottom: "5rem" }}
+      style={{ marginBottom: "5rem" }}
     >
       <div className="row">
         <div

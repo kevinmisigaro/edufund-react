@@ -6,6 +6,7 @@ import axios from "axios";
 import FundraiserCard from "./components/FundraiserCard";
 import { Link } from "react-router-dom";
 import WhatWeOffer from "./components/WhatWeOffer";
+import HowItWorks from "./components/HowItWorks";
 
 export default function Landing() {
   const [fundraisers, setFundraisers] = useState([]);
@@ -88,6 +89,8 @@ export default function Landing() {
       </div>
 
       <WhatWeOffer />
+
+      <HowItWorks />
 
       <Footer />
     </>

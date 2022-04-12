@@ -16,6 +16,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import FundraiserDetails from './public/FundraiserDetails';
 import StudentFundraiserDetails from './dashboard/StudentFundraiserDetails';
 import AllFundraisers from './public/AllFundraisers';
+import AboutUs from './public/AboutUs';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path='/' element={<Landing/>} />
         <Route path="/students" element={<Students/>} />
         <Route path="/donors" element={<Donors/>} />
+        <Route path="/about" element={<AboutUs />} />
         <Route path='/login' element={<Login/>} />
         <Route path='/register' element={<Register/>} />
         <Route path='fundraiser/:id' element={<FundraiserDetails/>} />

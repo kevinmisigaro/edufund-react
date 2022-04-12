@@ -21,6 +21,7 @@ import FundraiserStory from "../dashboard/components/FundraiserStory";
 import FundraiserUpdates from "../dashboard/components/FundraiserUpdates";
 import FundraiserComments from "../dashboard/components/FundraiserComments";
 import NavigationBar from "./components/NavigationBar";
+import Footer from "./Footer";
 
 export default function FundraiserDetails() {
   const [fundraiser, setFundraiser] = useState();
@@ -40,7 +41,7 @@ export default function FundraiserDetails() {
   return (
     <>
       <NavigationBar />
-      <div className="container row" style={{ marginTop: "3rem" }}>
+      <div className="container row mb-4" style={{ marginTop: "3rem" }}>
         <div
           className="col-md-8 col-sm-12 col-xs-12 mb-3"
           style={{ textAlign: "left" }}
@@ -135,6 +136,7 @@ export default function FundraiserDetails() {
           <FaCertificate /> &nbsp; {fundraiser?.qualification} <br />
         </div>
       </div>
+      <Footer />
     </>
   );
 }

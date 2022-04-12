@@ -18,7 +18,7 @@ export default function AllFundraisers() {
   return (
     <>
       <NavigationBar />
-      <div className="container" style={{ marginTop: '7rem' }}>
+      <div className="container" style={{ marginTop: '2rem' }}>
         <h3 style={{ fontWeight: "800", textAlign: "left" }}>
           All fundraisers
         </h3>

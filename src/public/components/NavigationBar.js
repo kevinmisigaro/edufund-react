@@ -28,8 +28,18 @@ export default function NavigationBar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/">
+              <Link className="nav-link" to="/about">
                 <b>Who we are</b>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/login">
+                <b>Login</b>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/register">
+                <b>Sign Up</b>
               </Link>
             </li>
           </ul>
