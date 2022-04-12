@@ -105,8 +105,14 @@ export default function FundraiserDetails() {
             {fundraiser?.currency} {fundraiser?.amount_donated} of{" "}
             {fundraiser?.currency} {fundraiser?.scholarship_amount}
           </small>
-          <ProgressBar now={60} color="#4992e9" />
-          <PublicDonateButton />
+          <ProgressBar
+            now={
+              (fundraiser?.amount_donated / fundraiser?.scholarship_amount) *
+              100
+            }
+            color="#4992e9"
+          />
+          <PublicDonateButton user={user} />
           <div className="d-flex flex-row justify-content-between mt-3">
             <FacebookIcon
               url={fundraiser?.title}

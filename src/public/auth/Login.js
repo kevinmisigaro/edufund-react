@@ -67,7 +67,7 @@ export default function Login() {
         <div className="container d-flex flex-row justify-content-center">
           <div
             className="card shadow p-4"
-            style={{ width: "40rem", marginTop: "180px", padding: "20px 0" }}
+            style={{ width: "40rem", marginTop: "100px", padding: "20px 0" }}
           >
             <h3 style={{ fontWeight: "bold" }}>Login</h3>
             <hr />

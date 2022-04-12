@@ -32,16 +32,26 @@ export default function NavigationBar() {
                 <b>Who we are</b>
               </Link>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/login">
-                <b>Login</b>
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/register">
-                <b>Sign Up</b>
-              </Link>
-            </li>
+            {localStorage.getItem("token") == null ? (
+              <>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/login">
+                    <b>Login</b>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/register">
+                    <b>Sign Up</b>
+                  </Link>
+                </li>
+              </>
+            ) : (
+              <li className="nav-item">
+                <Link className="nav-link" to="/dashboard/fundraisers">
+                  <b>Dashboard</b>
+                </Link>
+              </li>
+            )}
           </ul>
           <div className="d-flex flex-row justify-content-center">
             <Link
@@ -74,4 +84,3 @@ export default function NavigationBar() {
     </nav>
   );
 }
-

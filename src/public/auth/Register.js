@@ -148,7 +148,7 @@ export default function Register() {
         <div className="container d-flex flex-row justify-content-center">
           <div
             className="card shadow p-4"
-            style={{ width: "40rem", marginTop: "180px", padding: "20px 0" }}
+            style={{ width: "40rem", marginTop: "100px", padding: "20px 0" }}
           >
             <h3 style={{ fontWeight: "bold" }}>Sign up to start fundraising</h3>
             <p>Are you a company? Sign up as a company</p>
