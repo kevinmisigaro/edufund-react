@@ -1,6 +1,6 @@
 import React from "react";
 import img from "../assets/img/students-standing.jpg";
-import NavigationBar from "./NavigationBar";
+import NavigationBar from "./components/NavigationBar";
 import bg from "../assets/img/donors-save.png";
 import Footer from "./Footer";
 

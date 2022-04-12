@@ -23,19 +23,11 @@ export default function FundraiserCard(props) {
             }}
           ></div>
           <div className="card-body">
-            <b>{props.fundraiser.course}</b> fundraiser created{" "}
-            {moment(props.fundraiser.created_at).fromNow()}
-            <hr />
-            <div style={{ textAlign: "left" }}>
-              <small style={{ fontSize: "12px" }}>
-                <b>
-                  {props.fundraiser.currency} {props.fundraiser.amount_donated}
-                </b>{" "}
-                of {props.fundraiser.currency}{" "}
-                {props.fundraiser.scholarship_amount.toLocaleString("en-US")}{" "}
-                goal
-              </small>
-            </div>
+            <b>{props.fundraiser?.title}</b>
+            <br />
+            <small>
+              Created {moment(props.fundraiser?.created_at).fromNow()}
+            </small>
             <ProgressBar
               variant="info"
               style={{ height: "5px" }}

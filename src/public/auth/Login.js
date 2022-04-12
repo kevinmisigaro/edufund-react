@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import NavigationBar from "../NavigationBar";
+import NavigationBar from "../components/NavigationBar";
 import bg from "../../assets/img/students-caps-up-50.png";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import apiUrl from "../../config";
 
@@ -35,23 +35,21 @@ export default function Login() {
 
     axios.get(`http://127.0.0.1:8000/sanctum/csrf-cookie`).then(() => {
       axios
-      .post(`${apiUrl}/login`, {
-        email: values.email,
-        password: values.password,
-      })
-      .then((response) => {
-        localStorage.setItem("user", JSON.stringify(response.data.user));
-        localStorage.setItem("token", response.data.token);
-        setLoading(false);
-        navigate("/dashboard/fundraisers");
-      })
-      .catch((err) => {
-        console.log(err);
-        setLoading(false);
-      });
-    })
-
-
+        .post(`${apiUrl}/login`, {
+          email: values.email,
+          password: values.password,
+        })
+        .then((response) => {
+          localStorage.setItem("user", JSON.stringify(response.data.user));
+          localStorage.setItem("token", response.data.token);
+          setLoading(false);
+          navigate("/dashboard/fundraisers");
+        })
+        .catch((err) => {
+          console.log(err);
+          setLoading(false);
+        });
+    });
   };
 
   return (
@@ -101,6 +99,12 @@ export default function Login() {
                   >
                     {loading ? "Logging in..." : "LOG IN"}
                   </button>
+                </div>
+
+                <div className="mt-4">
+                  <p>
+                    Do not have an account? <Link to="/register">Sign up</Link>
+                  </p>
                 </div>
               </div>
             </form>

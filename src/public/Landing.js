@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Hero from "./components/Hero";
-import NavigationBar from "./NavigationBar";
+import NavigationBar from "./components/NavigationBar";
 import Footer from "./Footer";
 import axios from "axios";
 import FundraiserCard from "./components/FundraiserCard";

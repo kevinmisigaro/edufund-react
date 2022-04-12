@@ -21,10 +21,12 @@ export default function UserFundraiserCard(props) {
             }}
           ></div>
           <div className="card-body">
-            <b>{props.fundraiser?.course}</b> fundraiser created{" "}
+            <b>{props.fundraiser?.title}</b> 
+            <br/>
+            <small>
+            Created{" "}
             {moment(props.fundraiser?.created_at).fromNow()}
-            <hr />
-            Details
+            </small>
           </div>
         </div>
       </Link>

@@ -1,13 +1,30 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import NavigationBar from "./NavigationBar";
 import moment from "moment";
-import { ProgressBar } from "react-bootstrap";
+import { ProgressBar, Tab, Tabs } from "react-bootstrap";
 import PublicDonateButton from "./components/PublicDonateButton";
+import {
+  FacebookIcon,
+  LinkedinIcon,
+  TelegramIcon,
+  TwitterIcon,
+  WhatsappIcon,
+} from "react-share";
+import {
+  FaCertificate,
+  FaBuilding,
+  FaMapMarkerAlt,
+  FaNewspaper,
+} from "react-icons/fa";
+import FundraiserStory from "../dashboard/components/FundraiserStory";
+import FundraiserUpdates from "../dashboard/components/FundraiserUpdates";
+import FundraiserComments from "../dashboard/components/FundraiserComments";
+import NavigationBar from "./components/NavigationBar";
 
 export default function FundraiserDetails() {
   const [fundraiser, setFundraiser] = useState();
+  const [user, setUser] = useState({});
   let params = useParams();
 
   useEffect(() => {
@@ -16,71 +33,106 @@ export default function FundraiserDetails() {
       .then((res) => {
         setFundraiser(res.data);
       });
+
+    setUser(JSON.parse(localStorage.getItem("user")));
   }, [params.id]);
 
   return (
     <>
       <NavigationBar />
-      <div className="container row" style={{ marginTop: "6rem" }}>
-        <div className="col-md-8" style={{ textAlign: "left" }}>
-          <h3 style={{ fontWeight: "800" }}>{fundraiser?.course} course</h3>
+      <div className="container row" style={{ marginTop: "3rem" }}>
+        <div
+          className="col-md-8 col-sm-12 col-xs-12 mb-3"
+          style={{ textAlign: "left" }}
+        >
           <img
             src={process.env.REACT_APP_SITE_URL + "/" + fundraiser?.image}
             style={{ maxWidth: "30rem", marginBottom: "1rem" }}
             alt="..."
           />
+          <p>Created {moment(fundraiser?.created_at).fromNow()}</p>
+
+          <Tabs
+            defaultActiveKey="story"
+            id="uncontrolled-tab-example"
+            className="mb-3"
+          >
+            <Tab
+              eventKey="story"
+              title={<span style={{ color: "black" }}>My Story</span>}
+            >
+              <FundraiserStory fundraiser={fundraiser} />
+            </Tab>
+            <Tab
+              eventKey="updates"
+              title={
+                <span style={{ color: "black" }}>
+                  Updates ({fundraiser?.updates.length})
+                </span>
+              }
+            >
+              <FundraiserUpdates fundraiser={fundraiser} user={user} />
+            </Tab>
+            <Tab
+              eventKey="comments"
+              title={
+                <span style={{ color: "black" }}>
+                  Comments ({fundraiser?.comments.length})
+                </span>
+              }
+            >
+              <FundraiserComments fundraiser={fundraiser} user={user} />
+            </Tab>
+            <Tab
+              eventKey="donors"
+              title={
+                <span style={{ color: "black" }}>
+                  Donors ({fundraiser?.donors.length})
+                </span>
+              }
+            >
+              Donors
+            </Tab>
+          </Tabs>
+        </div>
+        <div
+          className="col-md-4 col-sm-12 col-xs-12 mb-3"
+          style={{ textAlign: "left" }}
+        >
+          <h3 style={{ fontWeight: "600" }}>{fundraiser?.title}</h3>
+          <small style={{ fontWeight: "bold" }}>
+            {fundraiser?.currency} {fundraiser?.amount_donated} of{" "}
+            {fundraiser?.currency} {fundraiser?.scholarship_amount}
+          </small>
+          <ProgressBar now={60} color="#4992e9" />
+          <PublicDonateButton />
+          <div className="d-flex flex-row justify-content-between mt-3">
+            <FacebookIcon
+              url={fundraiser?.title}
+              bgStyle={{ background: "blue" }}
+              round="true"
+              size={35}
+            />
+            <TwitterIcon url={fundraiser?.title} round="true" size={35} />
+            <WhatsappIcon url={fundraiser?.title} round="true" size={35} />
+            <TelegramIcon url={fundraiser?.title} round="true" size={35} />
+            <LinkedinIcon url={fundraiser?.title} round="true" size={35} />
+          </div>
+          <hr />
           <p>
-            Fundraiser by <b>{fundraiser?.student.name}</b>
+            {fundraiser?.student.name} <br />
+            Residing in {fundraiser?.student.city} <br />
+            {fundraiser?.student.gender == 1 ? "Male" : "Female"}
           </p>
           <hr />
-          <p>Created {moment(fundraiser?.created_at).fromNow()}</p>
+          <h5 style={{ color: "#4992e9" }}>Prospective degree</h5>
+          <FaCertificate /> &nbsp; {fundraiser?.course} <br />
+          <FaBuilding /> &nbsp; {fundraiser?.study_destination} <br />
+          <FaMapMarkerAlt /> &nbsp; {fundraiser?.country.name} <br />
+          <FaNewspaper /> &nbsp; {fundraiser?.level}
           <hr />
-
-          <p>{fundraiser?.reason_of_funding}</p>
-        </div>
-
-        <div className="col-md-4">
-          <div
-            className="card shadow p-4"
-            style={{ width: "100%", textAlign: "left" }}
-          >
-            <p>
-              <b>Amount raised:</b> {fundraiser?.currency}{" "}
-              {fundraiser?.amount_donated}
-            </p>
-
-            <ProgressBar
-              variant="info"
-              style={{ height: "10px" }}
-              now={
-                (fundraiser?.amount_donated / fundraiser?.scholarship_amount) *
-                100
-              }
-            />
-
-            <br />
-
-            <p>
-              <b>Target amount:</b> <br /> {fundraiser?.currency}{" "}
-              {fundraiser?.scholarship_amount.toLocaleString("en-US")}
-            </p>
-
-            <br />
-
-            <div className="text-center">
-              <PublicDonateButton fundraiser={fundraiser} />
-              <br />
-              <br />
-              {fundraiser?.amount_donated > 0 && (
-                <button
-                  className="btn btn-outline-info"
-                  style={{ fontWeight: "800" }}
-                >
-                  See all donors
-                </button>
-              )}
-            </div>
-          </div>
+          <h5 style={{ color: "#4992e9" }}>Prior/Current degree</h5>
+          <FaCertificate /> &nbsp; {fundraiser?.qualification} <br />
         </div>
       </div>
     </>

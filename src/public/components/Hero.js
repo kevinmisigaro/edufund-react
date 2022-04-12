@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <div
       className="container"
-      style={{ marginTop: "7rem", marginBottom: "5rem" }}
+      style={{ marginTop: "3rem", marginBottom: "5rem" }}
     >
       <div className="row">
         <div
@@ -14,7 +14,7 @@ export default function Hero() {
           style={{ textAlign: "left", marginTop: "5rem" }}
         >
           <br />
-          <h2 style={{ textAlign: "justify", fontSize: "2.7rem" }}>
+          <h2 style={{ textAlign: "justify", fontSize: "2.0rem" }}>
             We facilitate inclusive access to education for all Africans through
             community financing.
           </h2>
@@ -32,7 +32,7 @@ export default function Hero() {
           </Link>
         </div>
         <div className="col-md-6">
-          <img src={img} alt="..." style={{ width: "40rem" }} />
+          <img src={img} alt="..." style={{ width: "100%" }} />
         </div>
       </div>
     </div>

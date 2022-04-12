@@ -6,32 +6,34 @@ import { toast } from "react-toastify";
 export default function NewFundraiser() {
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState({});
+  const [countries, setCountries] = useState([]);
   const navigate = useNavigate();
   const [values, setValues] = useState({
-    degreeClassification: "",
-    englishMarks: "",
+    qualification: "",
+    level: "",
     amount: "",
     course: "",
     destination: "",
-    industry: "",
     background: "",
     currency: "",
     country: "",
     reason: "",
     image: "",
     video: "",
+    offer: false,
+    title: "",
+    story: "",
   });
 
   const [selectedImage, setSelectedImage] = useState(null);
 
-  const currencies = ["TZS", "USD"];
+  const currencies = ["Choose currency", "TZS", "USD"];
 
-  const countries = [
-    "Choose country",
-    "Tanzania",
+  const countryData = [
+    "Tanzania, United Republic of",
     "China",
     "Kenya",
-    "USA",
+    "United States",
     "South Africa",
     "Nigeria",
     "Uganda",
@@ -49,8 +51,6 @@ export default function NewFundraiser() {
     "Masters degree",
     "High School",
   ];
-
-  const offer = ["Have offer", ""];
 
   const fundraisingReasongs = [
     "Choose your fundrasing reasons",
@@ -72,7 +72,11 @@ export default function NewFundraiser() {
   ];
 
   useEffect(() => {
-    // axios.get(`${process.env.REACT_APP_API_URL}/countries`).then((value) => setCountries(value.data));
+    axios.get(`${process.env.REACT_APP_API_URL}/countries`).then((value) => {
+      setCountries(
+        value.data.filter((item) => countryData.includes(item.name))
+      );
+    });
     setUser(JSON.parse(localStorage.getItem("user")));
   }, []);
 
@@ -80,7 +84,7 @@ export default function NewFundraiser() {
     e.persist();
     setValues({
       ...values,
-      degreeClassification: e.target.value,
+      qualification: e.target.value,
     });
   };
 
@@ -92,6 +96,34 @@ export default function NewFundraiser() {
     });
   };
 
+  const handleStoryChange = (e) => {
+    e.persist();
+    setValues({
+      ...values,
+      story: e.target.value,
+    });
+  };
+
+  const handleTitleChange = (e) => {
+    e.persist();
+    setValues({
+      ...values,
+      title: e.target.value,
+    });
+  };
+
+  const handleOfferChange = (e) => {
+    e.persist();
+
+    const target = e.target;
+    const value = target.type === "checkbox" ? target.checked : target.value;
+
+    setValues({
+      ...values,
+      offer: value,
+    });
+  };
+
   const handleReasonChange = (e) => {
     e.persist();
     setValues({
@@ -100,11 +132,11 @@ export default function NewFundraiser() {
     });
   };
 
-  const handleEnglishMarksChange = (e) => {
+  const handleLevelChange = (e) => {
     e.persist();
     setValues({
       ...values,
-      englishMarks: e.target.value,
+      level: e.target.value,
     });
   };
 
@@ -140,14 +172,6 @@ export default function NewFundraiser() {
     });
   };
 
-  const handleIndustryChange = (e) => {
-    e.persist();
-    setValues({
-      ...values,
-      industry: e.target.value,
-    });
-  };
-
   const handleBackgroundChange = (e) => {
     e.persist();
     setValues({
@@ -169,12 +193,26 @@ export default function NewFundraiser() {
     setLoading(true);
     console.log(values);
 
+    if (!values.offer) {
+      return toast.error("Please return after you have secured admission");
+    }
+
+    if (
+      values.qualification === "" ||
+      values.reason === "" ||
+      values.currency === "" ||
+      values.country === "" ||
+      values.level === ""
+    ) {
+      setLoading(false);
+      return toast.error("Please fill in all the details");
+    }
+
     const formData = new FormData();
     formData.append("image", selectedImage, selectedImage.name);
     formData.append("user_id", user.id);
-    formData.append("degree_classification", values.degreeClassification);
-    formData.append("english_marks", values.englishMarks);
-    formData.append("industry", values.industry);
+    formData.append("qualification", values.qualification);
+    formData.append("level", values.level);
     formData.append("study_destination", values.destination);
     formData.append("background", values.background);
     formData.append("amount", values.amount);
@@ -183,6 +221,8 @@ export default function NewFundraiser() {
     formData.append("course", values.course);
     formData.append("reason_of_funding", values.reason);
     formData.append("video", values.video);
+    formData.append("title", values.title);
+    formData.append("story", values.story);
 
     axios.defaults.headers.common[
       "Authorization"
@@ -206,6 +246,15 @@ export default function NewFundraiser() {
       <h4 style={{ textAlign: "left" }}>Start a fundraiser</h4>
       <br />
       <form onSubmit={handleSubmit} style={{ textAlign: "left" }}>
+        <div className="mb-3">
+          <label>Fundraising title</label>
+          <input
+            className="form-control"
+            onChange={handleTitleChange}
+            type="text"
+          />
+        </div>
+
         <div className="row mb-4">
           <div className="col-md-6">
             <label>Upload Image</label>
@@ -258,10 +307,7 @@ export default function NewFundraiser() {
           </div>
           <div className="col">
             <label>Proposed level of study</label>
-            <select
-              className="form-control"
-              onChange={handleEnglishMarksChange}
-            >
+            <select className="form-control" onChange={handleLevelChange}>
               {levels.map((c) => (
                 <option key={c} value={c}>
                   {c}
@@ -301,14 +347,6 @@ export default function NewFundraiser() {
               onChange={handleDestinationChange}
             />
           </div>
-          {/* <div className="col">
-            <label>Industry/Sector</label>
-            <input
-              className="form-control"
-              onChange={handleIndustryChange}
-              type="text"
-            />
-          </div> */}
         </div>
 
         <div className="row mb-3">
@@ -324,8 +362,8 @@ export default function NewFundraiser() {
             <label>Proposed Country of Study</label>
             <select className="form-control" onChange={handleCountryChange}>
               {countries.map((c) => (
-                <option key={c} value={c}>
-                  {c}
+                <option key={c.id} value={c.id}>
+                  {c.name}
                 </option>
               ))}
             </select>
@@ -341,24 +379,36 @@ export default function NewFundraiser() {
           />
         </div>
 
-        <div className="mb-3">
-          <label>Reason for fundraising</label>
-          <select className="form-control">
-            {fundraisingReasongs.map((c) => (
-              <option key={c} value={c}>
-                {c}
-              </option>
-            ))}
-          </select>
+        <div className="mb-3 row">
+          <div className="col">
+            <label>Reason for fundraising</label>
+            <select className="form-control" onChange={handleReasonChange}>
+              {fundraisingReasongs.map((c) => (
+                <option key={c} value={c}>
+                  {c}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
 
-        <div className="mb-5">
+        <div className="mb-3">
           <label>Tell your story</label>
           <textarea
-            onChange={handleReasonChange}
+            onChange={handleStoryChange}
             className="form-control"
             rows="4"
           />
+        </div>
+
+        <div className="mb-5 form-check">
+          <input
+            className="form-check-input"
+            type="checkbox"
+            onChange={handleOfferChange}
+            checked={values.offer}
+          />
+          <label className="form-check-label">Secured admission</label>
         </div>
 
         <div className="mb-3 text-center">

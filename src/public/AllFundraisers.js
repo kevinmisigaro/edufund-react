@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import FundraiserCard from "./components/FundraiserCard";
-import NavigationBar from "./NavigationBar";
+import NavigationBar from "./components/NavigationBar";
 
 export default function AllFundraisers() {
   const [fundraisers, setFundraisers] = useState([]);

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import NavigationBar from "../NavigationBar";
+import NavigationBar from "../components/NavigationBar";
 import bg from "../../assets/img/students-caps-up-50.png";
 import axios from "axios";
 import apiUrl from "../../config";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Register() {
   const [loading, setLoading] = useState(false);
@@ -21,13 +21,33 @@ export default function Register() {
     country: "",
     email:"",
     phone: "",
+    city: "",
+    gender: ""
   });
+
+  const genders = ["Choose gender", "Male", "Female"]
 
   const handleNameChange = (e) => {
     e.persist();
     setValues({
       ...values,
       name: e.target.value,
+    });
+  };
+
+  const handleCityChange = (e) => {
+    e.persist();
+    setValues({
+      ...values,
+      city: e.target.value,
+    });
+  };
+
+  const handleGenderChange = (e) => {
+    e.persist();
+    setValues({
+      ...values,
+      gender: e.target.value,
     });
   };
 
@@ -82,6 +102,8 @@ export default function Register() {
       email: values.email,
       country_id: values.country,
       password: values.password,
+      city: values.city,
+      gender: values.gender
     };
 
     axios
@@ -150,6 +172,16 @@ export default function Register() {
                     placeholder="Email"
                   />
                 </div>
+
+                <div className="col-md-6 mb-3">
+                  <input
+                    className="form-control"
+                    type="text"
+                    onChange={handleCityChange}
+                    placeholder="City"
+                  />
+                </div>
+
                 <div className="col-md-6 mb-3">
                   <select
                     className="form-control"
@@ -162,6 +194,8 @@ export default function Register() {
                     ))}
                   </select>
                 </div>
+
+
                 <div className="col-md-6 mb-3">
                   <input
                     className="form-control"
@@ -170,6 +204,19 @@ export default function Register() {
                     placeholder="Phone number"
                   />
                 </div>
+
+                
+                <div className="col-md-6 mb-3">
+                  <select className="form-control" onChange={handleGenderChange}>
+                      {
+                        genders.map(g => <option key={g} value={g}>
+                          {g}
+                        </option>)
+                      }
+                  </select>
+                </div>
+
+
                 <div className="col-md-6 mb-3">
                   <input
                     className="form-control"
@@ -178,6 +225,8 @@ export default function Register() {
                     placeholder="Password"
                   />
                 </div>
+
+
                 <div className="col-md-6 mb-3">
                   <input
                     className="form-control"
@@ -195,6 +244,11 @@ export default function Register() {
                   >
                     {loading ? "Joining" : "JOIN"}
                   </button>
+                </div>
+                <div className="mt-4">
+                  <p>
+                   Already have an account? <Link to="/login">Log in</Link>
+                  </p>
                 </div>
               </div>
             </form>

@@ -3,38 +3,110 @@ import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import apiUrl from "../config";
-import img from "../assets/img/students-standing-40.png";
+import { ProgressBar, Tabs } from "react-bootstrap";
+import { FacebookIcon, LinkedinIcon, TelegramIcon, TwitterIcon, WhatsappIcon } from "react-share";
+import { FaCertificate, FaBuilding, FaMapMarkerAlt, FaNewspaper } from "react-icons/fa";
+import { Tab } from "bootstrap";
+import FundraiserStory from "./components/FundraiserStory";
+import FundraiserUpdates from "./components/FundraiserUpdates";
+import FundraiserComments from "./components/FundraiserComments";
 
 export default function StudentFundraiserDetails() {
   const [fundraiser, setFundraiser] = useState();
+  const [user, setUser] = useState({})
   let params = useParams();
 
   useEffect(() => {
-    axios.get(`${apiUrl}/fundraiser/${params.id}`).then((res) => {
+    let fundraiserId = params.id
+
+    axios.get(`${apiUrl}/fundraiser/${fundraiserId}`).then((res) => {
       console.log(res.data);
       setFundraiser(res.data);
     });
+
+    setUser(JSON.parse(localStorage.getItem("user")));
   }, [params.id]);
 
   return (
     <div className="container row" style={{ marginTop: "2rem" }}>
-      <div className="col-md-8 mb-3" style={{ textAlign: "left" }}>
-        <h3 style={{ fontWeight: "800" }}>{fundraiser?.course} course</h3>
+      <div className="col-md-8 col-sm-12 col-xs-12 mb-3" style={{ textAlign: "left" }}>
+        
         <img
           src={(process.env.REACT_APP_SITE_URL + '/' + fundraiser?.image)}
           style={{ maxWidth: "30rem", marginBottom: "1rem" }}
           alt="..."
         />
-        <hr />
         <p>Created {moment(fundraiser?.created_at).fromNow()}</p>
-        <hr />
 
-        <p>{fundraiser?.reason_of_funding}</p>
-      </div>
-      <div className="col-md-4 mb-3">
-          <div className="card shadow" style={{width: '100%'}}>
         
-          </div>
+        <Tabs defaultActiveKey="story" id="uncontrolled-tab-example" className="mb-3">
+          <Tab eventKey="story" title={<span style={{ color: 'black' }}>
+            My Story
+          </span>}>
+            <FundraiserStory fundraiser={fundraiser} />
+          </Tab>
+          <Tab eventKey="updates" title={<span style={{ color: 'black' }}>
+            Updates ({fundraiser?.updates.length})
+          </span>}>
+            <FundraiserUpdates fundraiser={fundraiser} user={user} />
+          </Tab>
+          <Tab eventKey="comments" title={<span style={{ color: 'black' }}>
+            Comments ({fundraiser?.comments.length})
+          </span>}>
+          <FundraiserComments fundraiser={fundraiser} user={user} />
+          </Tab>
+          <Tab eventKey="donors" title={<span style={{ color: 'black' }}>
+           Donors ({fundraiser?.donors.length})
+          </span>}>
+            Donors
+          </Tab>
+        </Tabs>
+
+
+      </div>
+      <div className="col-md-4 col-sm-12 col-xs-12 mb-3" style={{ textAlign: 'left' }}>
+
+      <h3 style={{ fontWeight: "600" }}>{fundraiser?.title}</h3>
+
+        <small style={{ fontWeight: 'bold' }}>
+          {fundraiser?.currency} {fundraiser?.amount_donated} of {fundraiser?.currency} {fundraiser?.scholarship_amount}
+        </small>
+        <ProgressBar now={60} color="#4992e9" />
+
+        <div className="d-flex flex-row justify-content-between mt-3">
+        <FacebookIcon url={fundraiser?.title} bgStyle={{ background: 'blue' }} round="true" size={35} />
+        <TwitterIcon url={fundraiser?.title} round="true" size={35} />
+        <WhatsappIcon url={fundraiser?.title} round="true" size={35} />
+        <TelegramIcon url={fundraiser?.title} round="true" size={35} />
+        <LinkedinIcon url={fundraiser?.title} round="true" size={35} />
+        </div>
+
+        <hr/>
+
+        <p>
+          {user.name} <br/>
+          Residing in {user.city} <br/>
+          {user.gender == 1 ? 'Male' : 'Female'}
+        </p>
+
+        <hr/>
+
+        <h5 style={{color: '#4992e9'}}>
+          Prospective degree
+        </h5>
+
+        <FaCertificate /> &nbsp; {fundraiser?.course} <br/>
+        <FaBuilding /> &nbsp; {fundraiser?.study_destination} <br/>
+        <FaMapMarkerAlt /> &nbsp; { fundraiser?.country.name } <br/>
+        <FaNewspaper /> &nbsp; {fundraiser?.level}
+
+        <hr/>
+
+        <h5 style={{color: '#4992e9'}}>
+          Prior/Current degree
+        </h5>
+        <FaCertificate /> &nbsp; {fundraiser?.qualification} <br/>
+
       </div>
     </div>
   );
