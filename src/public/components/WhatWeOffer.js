@@ -9,7 +9,7 @@ export default function WhatWeOffer() {
         <h3 style={{ fontWeight: "500" }}>What we offer</h3>
         <br />
         <div className="row mt-3">
-          <div className="col-md-4">
+          <div className="col-md-4 col-sm-12 col-xs-12">
             <FaUserGraduate size={60} />
             <br/><br/>
             <b>Students</b>
@@ -20,7 +20,7 @@ export default function WhatWeOffer() {
             <br />
             <Link className="btn btn-outline-primary" to="/students">Learn more</Link>
           </div>
-          <div className="col-md-4">
+          <div className="col-md-4 col-sm-12 col-xs-12">
           <FaMoneyBillAlt size={60} />
           <br/><br/>
             <b>Donors</b>
@@ -31,7 +31,7 @@ export default function WhatWeOffer() {
             <br />
             <Link to="/donors" className="btn btn-outline-primary">Learn more</Link>
           </div>
-          <div className="col-md-4">
+          <div className="col-md-4 col-sm-12 col-xs-12">
             <FaBell size={60} />
             <br /><br/>
             <b>Impact Investing</b>

@@ -3,7 +3,6 @@ import NavigationBar from "../components/NavigationBar";
 import bg from "../../assets/img/students-caps-up-50.png";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import apiUrl from "../../config";
 import { toast } from "react-toastify";
 
 export default function Login() {
@@ -34,9 +33,9 @@ export default function Login() {
     e.preventDefault();
     setLoading(true);
 
-    axios.get(`http://127.0.0.1:8000/sanctum/csrf-cookie`).then(() => {
+    axios.get(`${process.env.REACT_APP_SITE_URL}/sanctum/csrf-cookie`).then(() => {
       axios
-        .post(`${apiUrl}/login`, {
+        .post(`${process.env.REACT_APP_API_URL}/login`, {
           email: values.email,
           password: values.password,
         })

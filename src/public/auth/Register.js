@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import NavigationBar from "../components/NavigationBar";
 import bg from "../../assets/img/students-caps-up-50.png";
 import axios from "axios";
-import apiUrl from "../../config";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function Register() {
@@ -11,7 +10,7 @@ export default function Register() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`${apiUrl}/countries`).then((value) => setCountries(value.data));
+    axios.get(`${process.env.REACT_APP_API_URL}/countries`).then((value) => setCountries(value.data));
   }, []);
 
   const [values, setValues] = useState({
@@ -107,13 +106,13 @@ export default function Register() {
     };
 
     axios
-      .post(`${apiUrl}/register`, data)
+      .post(`${process.env.REACT_APP_API_URL}/register`, data)
       .then((res) => {
         
-        axios.get(`http://127.0.0.1:8000/sanctum/csrf-cookie`).then(() => {
+        axios.get(`${process.env.REACT_APP_SITE_URL}/sanctum/csrf-cookie`).then(() => {
 
           axios
-            .post(`${apiUrl}/login`, {
+            .post(`${process.env.REACT_APP_API_URL}/login`, {
               email: values.email,
               password: values.password,
             })
@@ -157,14 +156,15 @@ export default function Register() {
             <form onSubmit={handleSubmit}>
               <div className="row">
                 <div className="col-md-6 mb-3">
+                  <label>Fullname</label>
                   <input
                     type="text"
                     onChange={handleNameChange}
                     className="form-control"
-                    placeholder="Fullname"
                   />
                 </div>
                 <div className="col-md-6 mb-3">
+                <label>Email</label>
                   <input
                     className="form-control"
                     type="email"
@@ -174,6 +174,7 @@ export default function Register() {
                 </div>
 
                 <div className="col-md-6 mb-3">
+                <label>City</label>
                   <input
                     className="form-control"
                     type="text"
@@ -183,6 +184,7 @@ export default function Register() {
                 </div>
 
                 <div className="col-md-6 mb-3">
+                <label>Country</label>
                   <select
                     className="form-control"
                     onChange={handleCountryChange}
@@ -197,6 +199,7 @@ export default function Register() {
 
 
                 <div className="col-md-6 mb-3">
+                <label>Phone</label>
                   <input
                     className="form-control"
                     type="text"
@@ -207,6 +210,7 @@ export default function Register() {
 
                 
                 <div className="col-md-6 mb-3">
+                <label>Gender</label>
                   <select className="form-control" onChange={handleGenderChange}>
                       {
                         genders.map(g => <option key={g} value={g}>
@@ -218,6 +222,7 @@ export default function Register() {
 
 
                 <div className="col-md-6 mb-3">
+                <label>Password</label>
                   <input
                     className="form-control"
                     type="password"
@@ -228,6 +233,7 @@ export default function Register() {
 
 
                 <div className="col-md-6 mb-3">
+                <label>Confirm password</label>
                   <input
                     className="form-control"
                     onChange={handleConfirmPasswordChange}
