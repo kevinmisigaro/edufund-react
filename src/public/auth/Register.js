@@ -109,9 +109,7 @@ export default function Register() {
       .post(`${process.env.REACT_APP_API_URL}/register`, data)
       .then((res) => {
         
-        axios.get(`${process.env.REACT_APP_SITE_URL}/sanctum/csrf-cookie`).then(() => {
-
-          axios
+        axios
             .post(`${process.env.REACT_APP_API_URL}/login`, {
               email: values.email,
               password: values.password,
@@ -122,8 +120,6 @@ export default function Register() {
               setLoading(false);
               navigate("/dashboard/fundraisers");
             });
-
-        })
 
       })
       .catch((err) => {

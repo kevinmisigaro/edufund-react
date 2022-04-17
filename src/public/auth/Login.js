@@ -33,8 +33,7 @@ export default function Login() {
     e.preventDefault();
     setLoading(true);
 
-    axios.get(`${process.env.REACT_APP_SITE_URL}/sanctum/csrf-cookie`).then(() => {
-      axios
+    axios
         .post(`${process.env.REACT_APP_API_URL}/login`, {
           email: values.email,
           password: values.password,
@@ -50,7 +49,7 @@ export default function Login() {
           toast.error('Failed to login')
           setLoading(false);
         });
-    });
+
   };
 
   return (
