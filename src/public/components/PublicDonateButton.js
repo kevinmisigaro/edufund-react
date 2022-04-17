@@ -1,17 +1,48 @@
 import { closePaymentModal, useFlutterwave } from "flutterwave-react-v3";
 import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
-import { Link } from "react-router-dom";
 
 export default function PublicDonateButton(props) {
-  const [amount, setAmount] = useState(0);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [values, setValues] = useState({
+    amount: "",
+    name: "",
+    phone: "",
+    email: "",
+  });
 
   const handleAmountChange = (e) => {
     e.persist();
-    setAmount(e.target.value);
+    setValues({
+      ...values,
+      amount: e.target.value,
+    });
+  };
+
+  const handleNameChange = (e) => {
+    e.persist();
+    setValues({
+      ...values,
+      name: e.target.value,
+    });
+  };
+
+  const handlePhoneChange = (e) => {
+    e.persist();
+    setValues({
+      ...values,
+      phone: e.target.value,
+    });
+  };
+
+  const handleEmailChange = (e) => {
+    e.persist();
+    setValues({
+      ...values,
+      email: e.target.value,
+    });
   };
 
   const setNewAmount = (value) => {
@@ -19,23 +50,23 @@ export default function PublicDonateButton(props) {
 
     switch (value) {
       case "TZS":
-        data = 0.00043 * amount;
+        data = 0.00043 * values.amount;
         break;
 
       case "USD":
-        data = 1 * amount;
+        data = 1 * values.amount;
         break;
 
       case "KES":
-        data = 0.0087 * amount;
+        data = 0.0087 * values.amount;
         break;
 
       case "NGN":
-        data = 0.0024 * amount;
+        data = 0.0024 * values.amount;
         break;
 
       default:
-        data = 0.00043 * amount;
+        data = 0.00043 * values.amount;
         break;
     }
     return data;
@@ -44,13 +75,13 @@ export default function PublicDonateButton(props) {
   const config = {
     public_key: "FLWPUBK-beb8a5a0af5c4343b38e5831d6424963-X",
     tx_ref: Date.now(),
-    amount: setNewAmount(amount),
+    amount: setNewAmount(values.amount),
     currency: "USD",
     payment_options: "card,mobilemoney,ussd",
     customer: {
-      name: props.user?.name,
-      email: props.user?.email,
-      phone: props.user?.phone,
+      name: values.name,
+      email: values.email,
+      phone: values.phone,
     },
     customizations: {
       title: "Edufund Donation",
@@ -61,33 +92,58 @@ export default function PublicDonateButton(props) {
 
   return (
     <>
-      {localStorage.getItem("token") !== null ? (
-        <button onClick={handleShow} className="btn btn-primary mt-3">
-          Donate with card
-        </button>
-      ) : (
-        <Link className="btn btn-primary mt-3" to="/login">
-          Login to donate
-        </Link>
-      )}
+      <button onClick={handleShow} className="btn btn-primary mt-3">
+        Donate
+      </button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
-          <Modal.Title></Modal.Title>
+          <Modal.Title>Enter your details</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <>
-            <div className="form-group mb-2">
-              <label>Amount</label>
-              <input
-                type="number"
-                className="form-control"
-                onChange={handleAmountChange}
-              />
+            <div className="row form-group mb-2">
+              <div className="col">
+                <label>Name</label>
+                <input
+                  className="form-control"
+                  type="text"
+                  onChange={handleNameChange}
+                />
+              </div>
+              <div className="col">
+                <label>Email</label>
+                <input
+                  className="form-control"
+                  type="email"
+                  onChange={handleEmailChange}
+                />
+              </div>
             </div>
-            <div className="form-group mb-3">
+
+            <div className="row form-group mb-4">
+              <div className="col">
+                <label>Phone</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  onChange={handlePhoneChange}
+                />
+              </div>
+              <div className="col">
+                <label>Amount (in {props.fundraiser?.currency})</label>
+                <input
+                  type="number"
+                  className="form-control"
+                  onChange={handleAmountChange}
+                />
+              </div>
+            </div>
+
+            <div className="form-group d-grid mb-3">
               <button
                 onClick={() => {
+                  console.log(values);
                   handleFlutterPayment({
                     callback: (response) => {
                       console.log(response);
@@ -100,7 +156,7 @@ export default function PublicDonateButton(props) {
                 }}
                 className="btn btn-primary"
               >
-                Submit
+                <b>Pay</b>
               </button>
             </div>
           </>

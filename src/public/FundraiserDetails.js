@@ -112,7 +112,7 @@ export default function FundraiserDetails() {
             }
             color="#4992e9"
           />
-          <PublicDonateButton user={user} />
+          <PublicDonateButton fundraiser={fundraiser} />
           <div className="d-flex flex-row justify-content-between mt-3">
             <FacebookIcon
               url={fundraiser?.title}
@@ -120,10 +120,10 @@ export default function FundraiserDetails() {
               round="true"
               size={35}
             />
-            <TwitterIcon url={fundraiser?.title} round="true" size={35} />
-            <WhatsappIcon url={fundraiser?.title} round="true" size={35} />
-            <TelegramIcon url={fundraiser?.title} round="true" size={35} />
-            <LinkedinIcon url={fundraiser?.title} round="true" size={35} />
+            <TwitterIcon url={`${process.env.REACT_APP_SITE_URL}/fundraiser/${fundraiser?.id}`} round="true" size={35} />
+            <WhatsappIcon url={`${process.env.REACT_APP_SITE_URL}/fundraiser/${fundraiser?.id}`} round="true" size={35} />
+            <TelegramIcon url={`${process.env.REACT_APP_SITE_URL}/fundraiser/${fundraiser?.id}`} round="true" size={35} />
+            <LinkedinIcon url={`${process.env.REACT_APP_SITE_URL}/fundraiser/${fundraiser?.id}`} round="true" size={35} />
           </div>
           <hr />
           <p>

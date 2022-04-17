@@ -71,14 +71,18 @@ export default function StudentFundraiserDetails() {
         <small style={{ fontWeight: 'bold' }}>
           {fundraiser?.currency} {fundraiser?.amount_donated} of {fundraiser?.currency} {fundraiser?.scholarship_amount}
         </small>
-        <ProgressBar now={60} color="#4992e9" />
+        <ProgressBar now={
+                (fundraiser?.amount_donated /
+                  fundraiser?.scholarship_amount) *
+                100
+              } color="#4992e9" />
 
         <div className="d-flex flex-row justify-content-between mt-3">
-        <FacebookIcon url={fundraiser?.title} bgStyle={{ background: 'blue' }} round="true" size={35} />
-        <TwitterIcon url={fundraiser?.title} round="true" size={35} />
-        <WhatsappIcon url={fundraiser?.title} round="true" size={35} />
-        <TelegramIcon url={fundraiser?.title} round="true" size={35} />
-        <LinkedinIcon url={fundraiser?.title} round="true" size={35} />
+        <FacebookIcon url={`${process.env.REACT_APP_SITE_URL}/fundraiser/${fundraiser?.id}`} round="true" size={35} />
+        <TwitterIcon url={`${process.env.REACT_APP_SITE_URL}/fundraiser/${fundraiser?.id}`} round="true" size={35} />
+        <WhatsappIcon url={`${process.env.REACT_APP_SITE_URL}/fundraiser/${fundraiser?.id}`} round="true" size={35} />
+        <TelegramIcon url={`${process.env.REACT_APP_SITE_URL}/fundraiser/${fundraiser?.id}`} round="true" size={35} />
+        <LinkedinIcon url={`${process.env.REACT_APP_SITE_URL}/fundraiser/${fundraiser?.id}`} round="true" size={35} />
         </div>
 
         <hr/>

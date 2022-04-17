@@ -16,7 +16,7 @@ export default function Landing() {
     setLoading(true);
     axios.get(`${process.env.REACT_APP_API_URL}/fundraisers`).then((res) => {
       setFundraisers(res.data);
-      console.log(res.data)
+      console.log(res.data);
       setLoading(false);
     });
   }, []);
@@ -28,60 +28,69 @@ export default function Landing() {
       <Hero />
 
       <div className="container py-5">
-
-        <div className="mb-3" style={{ textAlign: "left" }}>
-          <h4 style={{ fontWeight: "700" }}>Featured Fundraisers</h4>
-        </div>
-
-        <div className="row">
-          {fundraisers.length > 0 ? (
-            fundraisers.map((x) => <FundraiserCard fundraiser={x} key={x.id} />)
-          ) : (
-            <div className="col-md-12 text-center mt-3">
-              <p>
-                {loading ? "Loading fundraisers" : "Currently no fundraisers"}
-              </p>
+        {fundraisers.length > 0 ? (
+          <>
+            <div className="mb-3" style={{ textAlign: "left" }}>
+              <h4 style={{ fontWeight: "700" }}>Featured Fundraisers</h4>
             </div>
-          )}
-        </div>
 
-        <div className="mb-3 mt-5" style={{ textAlign: "left" }}>
-          <h5 style={{ fontWeight: "700" }}>Recently started fundraisers</h5>
-        </div>
-
-        <div className="row">
-          {fundraisers.length > 0 ? (
-            fundraisers.map((x) => (
-              <FundraiserCard fundraiser={x} key={x.id} />
-            ))
-          ) : (
-            <div className="col-md-12 text-center mt-3">
-              <p>
-                {loading ? "Loading fundraisers" : "Currently no fundraisers"}
-              </p>
+            <div className="row">
+              {fundraisers.map((x) => (
+                <FundraiserCard fundraiser={x} key={x.id} />
+              ))}
             </div>
-          )}
-        </div>
+          </>
+        ) : (
+          <div className="col-md-12 text-center mt-3">
+            <p>{loading ? "Loading fundraisers" : ""}</p>
+          </div>
+        )}
 
-        <div className="mb-3 mt-5" style={{ textAlign: "left" }}>
-          <h5 style={{ fontWeight: "700" }}>Almost closing</h5>
-        </div>
-
-        <div className="row">
-          {fundraisers.length > 0 ? (
-            fundraisers.map((x) => <FundraiserCard fundraiser={x} key={x.id} />)
-          ) : (
-            <div className="col-md-12 text-center mt-3">
-              <p>
-                {loading ? "Loading fundraisers" : "Currently no fundraisers"}
-              </p>
+        {fundraisers.length > 0 ? (
+          <>
+            <div className="mb-3 mt-5" style={{ textAlign: "left" }}>
+              <h5 style={{ fontWeight: "700" }}>
+                Recently started fundraisers
+              </h5>
             </div>
-          )}
-        </div>
-        
+
+            <div className="row">
+              {fundraisers.map((x) => (
+                <FundraiserCard fundraiser={x} key={x.id} />
+              ))}
+            </div>
+          </>
+        ) : (
+          <div className="col-md-12 text-center mt-3">
+            <p>{loading ? "Loading fundraisers" : ""}</p>
+          </div>
+        )}
+
+        {fundraisers.length > 0 ? (
+          <>
+            <div className="mb-3 mt-5" style={{ textAlign: "left" }}>
+              <h5 style={{ fontWeight: "700" }}>Almost closing</h5>
+            </div>
+
+            <div className="row">
+              {fundraisers.map((x) => (
+                <FundraiserCard fundraiser={x} key={x.id} />
+              ))}
+            </div>
+          </>
+        ) : (
+          <div className="col-md-12 text-center mt-3">
+            <p>{loading ? "Loading fundraisers" : ""}</p>
+          </div>
+        )}
+
         {fundraisers.length > 0 && (
           <div className="text-center mt-5">
-            <Link className="btn" style={{ background:'#47688E', color: 'white' }} to="/allfundraisers">
+            <Link
+              className="btn"
+              style={{ background: "#47688E", color: "white" }}
+              to="/allfundraisers"
+            >
               View all fundraisers
             </Link>
           </div>

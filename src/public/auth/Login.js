@@ -4,6 +4,7 @@ import bg from "../../assets/img/students-caps-up-50.png";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import apiUrl from "../../config";
+import { toast } from "react-toastify";
 
 export default function Login() {
   const [loading, setLoading] = useState(false);
@@ -47,6 +48,7 @@ export default function Login() {
         })
         .catch((err) => {
           console.log(err);
+          toast.error('Failed to login')
           setLoading(false);
         });
     });
