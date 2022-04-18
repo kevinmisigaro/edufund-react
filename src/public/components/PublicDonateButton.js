@@ -7,7 +7,7 @@ export default function PublicDonateButton(props) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [values, setValues] = useState({
-    amount: "",
+    amount: 0,
     name: "",
     phone: "",
     email: "",
@@ -75,7 +75,7 @@ export default function PublicDonateButton(props) {
   const config = {
     public_key: "FLWPUBK-beb8a5a0af5c4343b38e5831d6424963-X",
     tx_ref: Date.now(),
-    amount: setNewAmount(values.amount),
+    amount: setNewAmount(props.fundraiser?.currency),
     currency: "USD",
     payment_options: "card,mobilemoney,ussd",
     customer: {

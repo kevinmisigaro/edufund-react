@@ -27,7 +27,7 @@ export default function NewFundraiser() {
 
   const [selectedImage, setSelectedImage] = useState(null);
 
-  const currencies = ["Choose currency", "TZS", "USD"];
+  const currencies = ["Choose currency", "TZS", "USD", "NGN", "KES"];
 
   const countryData = [
     "Tanzania, United Republic of",

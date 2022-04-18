@@ -66,7 +66,11 @@ export default function Landing() {
           </div>
         )}
 
-        {fundraisers.length > 0 ? (
+        {fundraisers.length > 0 &&
+        fundraisers.some(function (x) {
+          let percentage = (x.amount_donated / x.scholarship_amount) * 100;
+          return percentage > 90;
+        }) ? (
           <>
             <div className="mb-3 mt-5" style={{ textAlign: "left" }}>
               <h5 style={{ fontWeight: "700" }}>Almost closing</h5>
