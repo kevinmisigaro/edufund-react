@@ -50,6 +50,9 @@ export default function DashboardNav() {
               <NavDropdown.Item as={Link} to="donations">
                 Donations
               </NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="notifications">
+                Notifications
+              </NavDropdown.Item>
               <NavDropdown.Item as={Link} to="settings">
                 Account settings
               </NavDropdown.Item>

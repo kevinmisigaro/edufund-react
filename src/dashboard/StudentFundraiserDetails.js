@@ -2,10 +2,9 @@ import axios from "axios";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import apiUrl from "../config";
 import { ProgressBar, Tabs } from "react-bootstrap";
 import { FacebookIcon, LinkedinIcon, TelegramIcon, TwitterIcon, WhatsappIcon } from "react-share";
-import { FaCertificate, FaBuilding, FaMapMarkerAlt, FaNewspaper } from "react-icons/fa";
+import { FaCertificate, FaBuilding, FaMapMarkerAlt, FaNewspaper, FaRegCalendarAlt } from "react-icons/fa";
 import { Tab } from "bootstrap";
 import FundraiserStory from "./components/FundraiserStory";
 import FundraiserUpdates from "./components/FundraiserUpdates";
@@ -19,23 +18,31 @@ export default function StudentFundraiserDetails() {
   useEffect(() => {
     let fundraiserId = params.id
 
-    axios.get(`${apiUrl}/fundraiser/${fundraiserId}`).then((res) => {
+    axios.get(`${process.env.REACT_APP_API_URL}/fundraiser/${fundraiserId}`).then((res) => {
       console.log(res.data);
       setFundraiser(res.data);
     });
 
     setUser(JSON.parse(localStorage.getItem("user")));
-  }, [params.id]);
+  }, []);
 
   return (
-    <div className="container row" style={{ marginTop: "2rem" }}>
+    <div className="container row" style={{ marginTop: "2rem", marginBottom: '4rem' }}>
       <div className="col-md-8 col-sm-12 col-xs-12 mb-3" style={{ textAlign: "left" }}>
         
-        <img
-          src={(process.env.REACT_APP_SITE_URL + '/' + fundraiser?.image)}
-          style={{ maxWidth: "30rem", marginBottom: "1rem" }}
-          alt="..."
-        />
+      <div
+            style={{
+              backgroundImage: `url(${
+                process.env.REACT_APP_SITE_URL + "/" + fundraiser?.image
+              })`,
+              backgroundRepeat: "no repeat",
+              backgroundSize: "cover",
+              backgroundPosition: "center center",
+              height: "25rem",
+              width: "100%",
+            }}
+          ></div>
+          <br/>
         <p>Created {moment(fundraiser?.created_at).fromNow()}</p>
 
         
@@ -110,6 +117,13 @@ export default function StudentFundraiserDetails() {
           Prior/Current degree
         </h5>
         <FaCertificate /> &nbsp; {fundraiser?.qualification} <br/>
+
+        <hr/>
+
+        <h5 style={{color: '#4992e9'}}>
+          End date
+        </h5>
+        <FaRegCalendarAlt /> &nbsp; {moment(fundraiser?.end_date).format('LL')} <br/>
 
       </div>
     </div>

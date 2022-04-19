@@ -17,6 +17,7 @@ import FundraiserDetails from './public/FundraiserDetails';
 import StudentFundraiserDetails from './dashboard/StudentFundraiserDetails';
 import AllFundraisers from './public/AllFundraisers';
 import AboutUs from './public/AboutUs';
+import Notifications from './dashboard/Notifications';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
           <Route path='newfundraiser' element={<NewFundraiser/>} />
           <Route path="funddetails/:id" element={<StudentFundraiserDetails />} />
           <Route path='fundraisersuccess' element={<FundraiserSuccess/>} />
+          <Route path='notifications' element={<Notifications/>} />
         </Route>
       </Routes>
       <ToastContainer/>

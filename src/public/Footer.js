@@ -6,6 +6,7 @@ import {
   FaInstagram,
   FaPhoneAlt,
   FaMailBulk,
+  FaMapPin
 } from "react-icons/fa";
 
 export default function Footer() {
@@ -34,11 +35,12 @@ export default function Footer() {
         </div>
 
         <div className="col-md-6 col-xs-12 col-sm-12">
-          <h5 style={{ fontWeight: "700" }}>Contact information</h5>
-          <br />
-          <FaPhoneAlt /> {" "}
+          {/* <h5 style={{ fontWeight: "700" }}>Contact information</h5>
+          <br /> */}
+          <FaMapPin /> {"  "}  <span style={{ fontSize: "11pt" }}>Ally Sykes road, Dar es Salaam, Tanzania</span> <br/><br/>
+          <FaPhoneAlt /> {"  "}
           <span style={{ fontSize: "11pt" }}>+255 782 835 136</span> <br/><br/>
-          <FaMailBulk /> {" "}  <span style={{ fontSize: "11pt" }}>info@edufund.com</span>
+          <FaMailBulk /> {"  "}  <span style={{ fontSize: "11pt" }}>info@edufund.com</span>
         </div>
       </div>
     </footer>

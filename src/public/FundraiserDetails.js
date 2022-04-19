@@ -16,6 +16,7 @@ import {
   FaBuilding,
   FaMapMarkerAlt,
   FaNewspaper,
+  FaRegCalendarAlt,
 } from "react-icons/fa";
 import FundraiserStory from "../dashboard/components/FundraiserStory";
 import FundraiserUpdates from "../dashboard/components/FundraiserUpdates";
@@ -46,11 +47,33 @@ export default function FundraiserDetails() {
           className="col-md-8 col-sm-12 col-xs-12 mb-3"
           style={{ textAlign: "left" }}
         >
-          <img
-            src={process.env.REACT_APP_SITE_URL + "/" + fundraiser?.image}
-            style={{ maxWidth: "30rem", marginBottom: "1rem" }}
-            alt="..."
-          />
+          {fundraiser?.video ? (
+            <div style={{ height: "25rem", width: "100%" }}>
+              <iframe
+                width="100%"
+                height="100%"
+                src={fundraiser?.video}
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
+          ) : (
+            <div
+              style={{
+                backgroundImage: `url(${
+                  process.env.REACT_APP_SITE_URL + "/" + fundraiser?.image
+                })`,
+                backgroundRepeat: "no repeat",
+                backgroundSize: "cover",
+                backgroundPosition: "center center",
+                height: "25rem",
+                width: "100%",
+              }}
+            ></div>
+          )}
+          <br />
           <p>Created {moment(fundraiser?.created_at).fromNow()}</p>
 
           <Tabs
@@ -120,10 +143,26 @@ export default function FundraiserDetails() {
               round="true"
               size={35}
             />
-            <TwitterIcon url={`${process.env.REACT_APP_SITE_URL}/fundraiser/${fundraiser?.id}`} round="true" size={35} />
-            <WhatsappIcon url={`${process.env.REACT_APP_SITE_URL}/fundraiser/${fundraiser?.id}`} round="true" size={35} />
-            <TelegramIcon url={`${process.env.REACT_APP_SITE_URL}/fundraiser/${fundraiser?.id}`} round="true" size={35} />
-            <LinkedinIcon url={`${process.env.REACT_APP_SITE_URL}/fundraiser/${fundraiser?.id}`} round="true" size={35} />
+            <TwitterIcon
+              url={`${process.env.REACT_APP_SITE_URL}/fundraiser/${fundraiser?.id}`}
+              round="true"
+              size={35}
+            />
+            <WhatsappIcon
+              url={`${process.env.REACT_APP_SITE_URL}/fundraiser/${fundraiser?.id}`}
+              round="true"
+              size={35}
+            />
+            <TelegramIcon
+              url={`${process.env.REACT_APP_SITE_URL}/fundraiser/${fundraiser?.id}`}
+              round="true"
+              size={35}
+            />
+            <LinkedinIcon
+              url={`${process.env.REACT_APP_SITE_URL}/fundraiser/${fundraiser?.id}`}
+              round="true"
+              size={35}
+            />
           </div>
           <hr />
           <p>
@@ -140,6 +179,10 @@ export default function FundraiserDetails() {
           <hr />
           <h5 style={{ color: "#4992e9" }}>Prior/Current degree</h5>
           <FaCertificate /> &nbsp; {fundraiser?.qualification} <br />
+          <hr />
+          <h5 style={{ color: "#4992e9" }}>End date</h5>
+          <FaRegCalendarAlt /> &nbsp;{" "}
+          {moment(fundraiser?.end_date).format("LL")} <br />
         </div>
       </div>
       <Footer />

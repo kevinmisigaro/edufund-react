@@ -23,9 +23,14 @@ export default function UserFundraiserCard(props) {
           <div className="card-body">
             <b>{props.fundraiser?.title}</b> 
             <br/>
-            <small>
+            {/* <small>
             Created{" "}
             {moment(props.fundraiser?.created_at).fromNow()}
+            </small>
+            <br/> */}
+            <small>
+            Ends in {" "}
+            {moment(props.fundraiser?.end_date).toNow(true)}
             </small>
           </div>
         </div>

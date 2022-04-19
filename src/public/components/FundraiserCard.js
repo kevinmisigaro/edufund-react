@@ -25,8 +25,12 @@ export default function FundraiserCard(props) {
           <div className="card-body">
             <b>{props.fundraiser?.title}</b>
             <br />
-            <small>
+            {/* <small>
               Created {moment(props.fundraiser?.created_at).fromNow()}
+            </small> */}
+            <small>
+            Ends in {" "}
+            {moment(props.fundraiser?.end_date).toNow(true)}
             </small>
             <ProgressBar
               variant="info"

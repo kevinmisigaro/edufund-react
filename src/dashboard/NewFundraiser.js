@@ -23,6 +23,8 @@ export default function NewFundraiser() {
     offer: false,
     title: "",
     story: "",
+    repay: "",
+    timeline: "",
   });
 
   const [selectedImage, setSelectedImage] = useState(null);
@@ -52,6 +54,33 @@ export default function NewFundraiser() {
     "High School",
   ];
 
+  const timelines = [
+    {
+      time: 0,
+      text: "Choose timelines",
+    },
+    {
+      time: 1,
+      text: "1 month",
+    },
+    {
+      time: 3,
+      text: "3 months",
+    },
+    {
+      time: 6,
+      text: "6 months",
+    },
+    {
+      time: 9,
+      text: "9 months",
+    },
+    {
+      time: 12,
+      text: "12 months",
+    },
+  ];
+
   const fundraisingReasongs = [
     "Choose your fundrasing reasons",
     "Tuition fees",
@@ -64,10 +93,12 @@ export default function NewFundraiser() {
 
   const levels = [
     "Choose your level of study",
-    "Foundation",
+    "Diploma",
+    "Foundation/Pre-degree",
     "Undergraduate",
     "Postgraduate",
     "Study aboard/Exchange program",
+    "Professional examination/certification",
     "PhD",
   ];
 
@@ -85,6 +116,22 @@ export default function NewFundraiser() {
     setValues({
       ...values,
       qualification: e.target.value,
+    });
+  };
+
+  const handleTimelineChange = (e) => {
+    e.persist();
+    setValues({
+      ...values,
+      timeline: e.target.value,
+    });
+  };
+
+  const handleRepayChange = (e) => {
+    e.persist();
+    setValues({
+      ...values,
+      repay: e.target.value,
     });
   };
 
@@ -202,7 +249,8 @@ export default function NewFundraiser() {
       values.reason === "" ||
       values.currency === "" ||
       values.country === "" ||
-      values.level === ""
+      values.level === "" ||
+      values.timeline === ""
     ) {
       setLoading(false);
       return toast.error("Please fill in all the details");
@@ -223,6 +271,8 @@ export default function NewFundraiser() {
     formData.append("video", values.video);
     formData.append("title", values.title);
     formData.append("story", values.story);
+    formData.append("repay", values.repay);
+    formData.append("timeline", values.timeline);
 
     axios.defaults.headers.common[
       "Authorization"
@@ -242,181 +292,231 @@ export default function NewFundraiser() {
   };
 
   return (
-    <div className="container mt-3">
-      <h4 style={{ textAlign: "left" }}>Start a fundraiser</h4>
-      <br />
-      <form onSubmit={handleSubmit} style={{ textAlign: "left" }}>
-        <div className="mb-3">
-          <label>Fundraising title</label>
-          <input
-            className="form-control"
-            onChange={handleTitleChange}
-            type="text"
-          />
-        </div>
+    <div className="container-fluid" style={{ background: "#eef5f9" }}>
+      <div className="container pt-3" style={{ paddingBottom: "10rem" }}>
+        <h4 style={{ textAlign: "left", fontWeight: "700" }}>
+          Start a fundraiser
+        </h4>
+        <br />
 
-        <div className="row mb-4">
-          <div className="col-md-6">
-            <label>Upload Image</label>
-            {selectedImage && (
+        <div className="card shadow" style={{ width: "100%", padding: "20px" }}>
+          <div className="card-body">
+            <form onSubmit={handleSubmit} style={{ textAlign: "left" }}>
+              <div className="row mb-4">
+                <div className="col">
+                  <label>Fundraising title</label>
+                  <input
+                    className="form-control"
+                    onChange={handleTitleChange}
+                    type="text"
+                  />
+                </div>
+                <div className="col">
+                  <label>Fundrasing duration</label>
+                  <select
+                    className="form-control"
+                    onChange={handleTimelineChange}
+                  >
+                    {timelines.map((x) => (
+                      <option value={x.time} key={x.time}>
+                        {x.text}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <div className="row mb-4">
+                <div className="col-md-6">
+                  <label>Upload Image</label>
+                  {selectedImage && (
+                    <div className="mb-3">
+                      <img
+                        alt="not fount"
+                        width={"250px"}
+                        src={URL.createObjectURL(selectedImage)}
+                      />
+                      <button
+                        className="btn btn-danger"
+                        onClick={() => setSelectedImage(null)}
+                      >
+                        Remove
+                      </button>
+                    </div>
+                  )}
+
+                  <input
+                    type="file"
+                    name="myImage"
+                    className="form-control"
+                    onChange={(event) => {
+                      console.log(event.target.files[0]);
+                      setSelectedImage(event.target.files[0]);
+                    }}
+                  />
+                </div>
+                <div className="col-md-6">
+                  <label>Upload embedded youtube video link (optional) </label>
+                  <input
+                    className="form-control"
+                    type="text"
+                    onChange={handleVideoChange}
+                  />
+                </div>
+              </div>
+
+              <div className="row mb-3">
+                <div className="col">
+                  <label>Your highest level of qualification</label>
+                  <select
+                    className="form-control"
+                    onChange={handleDegreeChange}
+                  >
+                    {qualifications.map((x) => (
+                      <option value={x} key={x}>
+                        {x}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div className="col">
+                  <label>Proposed level of study</label>
+                  <select className="form-control" onChange={handleLevelChange}>
+                    {levels.map((c) => (
+                      <option key={c} value={c}>
+                        {c}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <div className="row mb-3">
+                <div className="col">
+                  <label>Currency</label>
+                  <select
+                    className="form-control"
+                    onChange={handleCurrencyChange}
+                  >
+                    {currencies.map((c) => (
+                      <option key={c} value={c}>
+                        {c}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div className="col">
+                  <label>Fundraising target</label>
+                  <input
+                    className="form-control"
+                    onChange={handleAmountChange}
+                    type="number"
+                  />
+                </div>
+              </div>
+
+              <div className="row mb-3">
+                <div className="col">
+                  <label>University of choice</label>
+                  <input
+                    className="form-control"
+                    type="text"
+                    onChange={handleDestinationChange}
+                  />
+                </div>
+              </div>
+
+              <div className="row mb-3">
+                <div className="col">
+                  <label>Proposed course of study</label>
+                  <input
+                    className="form-control"
+                    type="text"
+                    onChange={handleCourseChange}
+                  />
+                </div>
+                <div className="col">
+                  <label>Proposed Country of Study</label>
+                  <select
+                    className="form-control"
+                    onChange={handleCountryChange}
+                  >
+                    {countries.map((c) => (
+                      <option key={c.id} value={c.id}>
+                        {c.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
               <div className="mb-3">
-                <img
-                  alt="not fount"
-                  width={"250px"}
-                  src={URL.createObjectURL(selectedImage)}
+                <label>Prior academic background</label>
+                <textarea
+                  onChange={handleBackgroundChange}
+                  className="form-control"
+                  rows="4"
                 />
-                <button
-                  className="btn btn-danger"
-                  onClick={() => setSelectedImage(null)}
-                >
-                  Remove
+              </div>
+
+              <div className="mb-3 row">
+                <div className="col">
+                  <label>Reason for fundraising</label>
+                  <select
+                    className="form-control"
+                    onChange={handleReasonChange}
+                  >
+                    {fundraisingReasongs.map((c) => (
+                      <option key={c} value={c}>
+                        {c}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <div className="mb-3">
+                <label>Tell your story</label>
+                <textarea
+                  onChange={handleStoryChange}
+                  className="form-control"
+                  rows="4"
+                />
+              </div>
+
+              <div className="mb-3">
+                <label>
+                  How will you pay foward if you are able to achieve your
+                  fundraising goal
+                </label>
+                <textarea
+                  onChange={handleRepayChange}
+                  className="form-control"
+                  rows="4"
+                />
+              </div>
+
+              <div className="mb-5 form-check">
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  onChange={handleOfferChange}
+                  checked={values.offer}
+                />
+                <label className="form-check-label">Secured admission</label>
+              </div>
+
+              <div className="mb-3 text-center">
+                <button type="submit" className="btn btn-primary">
+                  {loading
+                    ? "Creating fundraiser..."
+                    : "Start a new fundraiser"}
                 </button>
               </div>
-            )}
-
-            <input
-              type="file"
-              name="myImage"
-              className="form-control"
-              onChange={(event) => {
-                console.log(event.target.files[0]);
-                setSelectedImage(event.target.files[0]);
-              }}
-            />
-          </div>
-          <div className="col-md-6">
-            <label>Upload video link (optional) </label>
-            <input
-              className="form-control"
-              type="text"
-              onChange={handleVideoChange}
-            />
+            </form>
           </div>
         </div>
-
-        <div className="row mb-3">
-          <div className="col">
-            <label>Your highest level of qualification</label>
-            <select className="form-control" onChange={handleDegreeChange}>
-              {qualifications.map((x) => (
-                <option value={x} key={x}>
-                  {x}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="col">
-            <label>Proposed level of study</label>
-            <select className="form-control" onChange={handleLevelChange}>
-              {levels.map((c) => (
-                <option key={c} value={c}>
-                  {c}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
-
-        <div className="row mb-3">
-          <div className="col">
-            <label>Currency</label>
-            <select className="form-control" onChange={handleCurrencyChange}>
-              {currencies.map((c) => (
-                <option key={c} value={c}>
-                  {c}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="col">
-            <label>Fundraising target</label>
-            <input
-              className="form-control"
-              onChange={handleAmountChange}
-              type="number"
-            />
-          </div>
-        </div>
-
-        <div className="row mb-3">
-          <div className="col">
-            <label>University of choice</label>
-            <input
-              className="form-control"
-              type="text"
-              onChange={handleDestinationChange}
-            />
-          </div>
-        </div>
-
-        <div className="row mb-3">
-          <div className="col">
-            <label>Proposed course of study</label>
-            <input
-              className="form-control"
-              type="text"
-              onChange={handleCourseChange}
-            />
-          </div>
-          <div className="col">
-            <label>Proposed Country of Study</label>
-            <select className="form-control" onChange={handleCountryChange}>
-              {countries.map((c) => (
-                <option key={c.id} value={c.id}>
-                  {c.name}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
-
-        <div className="mb-3">
-          <label>Prior academic background</label>
-          <textarea
-            onChange={handleBackgroundChange}
-            className="form-control"
-            rows="4"
-          />
-        </div>
-
-        <div className="mb-3 row">
-          <div className="col">
-            <label>Reason for fundraising</label>
-            <select className="form-control" onChange={handleReasonChange}>
-              {fundraisingReasongs.map((c) => (
-                <option key={c} value={c}>
-                  {c}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
-
-        <div className="mb-3">
-          <label>Tell your story</label>
-          <textarea
-            onChange={handleStoryChange}
-            className="form-control"
-            rows="4"
-          />
-        </div>
-
-        <div className="mb-5 form-check">
-          <input
-            className="form-check-input"
-            type="checkbox"
-            onChange={handleOfferChange}
-            checked={values.offer}
-          />
-          <label className="form-check-label">Secured admission</label>
-        </div>
-
-        <div className="mb-3 text-center">
-          <button type="submit" className="btn btn-primary">
-            {loading ? "Creating fundraiser..." : "Start a new fundraiser"}
-          </button>
-        </div>
-      </form>
+      </div>
     </div>
   );
 }
