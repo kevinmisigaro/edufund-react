@@ -6,7 +6,7 @@ import {
   FaInstagram,
   FaPhoneAlt,
   FaMailBulk,
-  FaMapPin
+  FaMapPin,
 } from "react-icons/fa";
 
 export default function Footer() {
@@ -14,33 +14,45 @@ export default function Footer() {
     <footer className="py-5 bg-dark text-white">
       <div className="container row">
         <div
-          className="col-md-6 col-xs-12 col-sm-12"
+          className="col-md-9 col-xs-12 col-sm-12"
           style={{ textAlign: "left" }}
         >
-          <small>
-            Get in touch with EduFund on our social media to keep up to date
-            with the most current information regarding what we do and our most
-            recent activities.
-          </small>
+          <div style={{ width: "80%" }}>
+            <small>
+              Get in touch with EduFund on our social media to keep up to date
+              with the most current information regarding what we do and our
+              most recent activities.
+            </small>
 
-          <div className="d-flex mt-5 flex-row justify-content-around">
-            <FaFacebook />
+            <div className="d-flex mt-5 flex-row justify-content-around">
+              <FaFacebook />
 
-            <FaTwitter />
+              <FaTwitter />
 
-            <FaLinkedin />
+              <FaLinkedin />
 
-            <FaInstagram />
+              <FaInstagram />
+            </div>
           </div>
         </div>
 
-        <div className="col-md-6 col-xs-12 col-sm-12">
-          {/* <h5 style={{ fontWeight: "700" }}>Contact information</h5>
-          <br /> */}
-          <FaMapPin /> {"  "}  <span style={{ fontSize: "11pt" }}>Ally Sykes road, Dar es Salaam, Tanzania</span> <br/><br/>
-          <FaPhoneAlt /> {"  "}
-          <span style={{ fontSize: "11pt" }}>+255 782 835 136</span> <br/><br/>
-          <FaMailBulk /> {"  "}  <span style={{ fontSize: "11pt" }}>info@edufund.com</span>
+        <div className="col-md-3 col-xs-12 col-sm-12">
+          <ul className="list-unstyled" style={{ textAlign: "left" }}>
+            <li>
+              <FaMapPin /> &nbsp;&nbsp;{" "}
+              <span style={{ fontSize: "11pt" }}>
+                Ally Sykes road, Dar es Salaam, Tanzania
+              </span>
+            </li>
+            <li>
+              <FaPhoneAlt /> &nbsp;&nbsp;
+              <span style={{ fontSize: "11pt" }}>+255 752 817 723</span>
+            </li>
+            <li>
+              <FaMailBulk /> &nbsp;&nbsp;{" "}
+              <span style={{ fontSize: "11pt" }}>info@edufund.com</span>
+            </li>
+          </ul>
         </div>
       </div>
     </footer>
