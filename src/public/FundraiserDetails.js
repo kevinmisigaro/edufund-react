@@ -47,7 +47,7 @@ export default function FundraiserDetails() {
           className="col-md-8 col-sm-12 col-xs-12 mb-3"
           style={{ textAlign: "left" }}
         >
-          {fundraiser?.video ? (
+          {(fundraiser?.video !== null || fundraiser?.video !== '') ? (
             <div style={{ height: "25rem", width: "100%" }}>
               <iframe
                 width="100%"

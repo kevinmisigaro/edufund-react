@@ -30,18 +30,32 @@ export default function StudentFundraiserDetails() {
     <div className="container row" style={{ marginTop: "2rem", marginBottom: '4rem' }}>
       <div className="col-md-8 col-sm-12 col-xs-12 mb-3" style={{ textAlign: "left" }}>
         
-      <div
-            style={{
-              backgroundImage: `url(${
-                process.env.REACT_APP_SITE_URL + "/" + fundraiser?.image
-              })`,
-              backgroundRepeat: "no repeat",
-              backgroundSize: "cover",
-              backgroundPosition: "center center",
-              height: "25rem",
-              width: "100%",
-            }}
-          ></div>
+      {(fundraiser?.video !== null || fundraiser?.video !== '') ? (
+            <div style={{ height: "25rem", width: "100%" }}>
+              <iframe
+                width="100%"
+                height="100%"
+                src={fundraiser?.video}
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
+          ) : (
+            <div
+              style={{
+                backgroundImage: `url(${
+                  process.env.REACT_APP_SITE_URL + "/" + fundraiser?.image
+                })`,
+                backgroundRepeat: "no repeat",
+                backgroundSize: "cover",
+                backgroundPosition: "center center",
+                height: "25rem",
+                width: "100%",
+              }}
+            ></div>
+          )}
           <br/>
         <p>Created {moment(fundraiser?.created_at).fromNow()}</p>
 
