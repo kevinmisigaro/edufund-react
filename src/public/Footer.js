@@ -23,15 +23,28 @@ export default function Footer() {
               with the most current information regarding what we do and our
               most recent activities.
             </small>
-
             <div className="d-flex mt-5 flex-row justify-content-around">
-              <FaFacebook />
-
-              <FaTwitter />
-
-              <FaLinkedin />
-
-              <FaInstagram />
+              <a
+                href="https://www.facebook.com/edufund.uk"
+                style={{ textDecoration: "none", color: "white" }}
+                target="_blank"
+              >
+                <FaFacebook />
+              </a>
+              <a
+                href="https://www.instagram.com/edu_fund/"
+                style={{ textDecoration: "none", color: "white" }}
+                target="_blank"
+              >
+                <FaInstagram />
+              </a>
+              <a
+                href="https://twitter.com/_EduFund"
+                style={{ textDecoration: "none", color: "white" }}
+                target="_blank"
+              >
+                <FaTwitter />
+              </a>
             </div>
           </div>
         </div>

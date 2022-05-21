@@ -9,7 +9,7 @@ export default function WhatWeOffer() {
         <h3 style={{ fontWeight: "500" }}>What we offer</h3>
         <br />
         <div className="row mt-3">
-          <div className="col-md-4 col-sm-12 col-xs-12">
+          <div className="col-md-6 col-sm-12 col-xs-12">
             <FaUsers size={60} />
             <br />
             <br />
@@ -18,12 +18,12 @@ export default function WhatWeOffer() {
               EduFund is your platform to tell your story to millions of people
               that will contribute and invest towards your academic pursuit.
             </p>
-            <br />
+            <br/>
             <Link className="btn btn-outline-primary" to="/students">
               Learn more
             </Link>
           </div>
-          <div className="col-md-4 col-sm-12 col-xs-12">
+          <div className="col-md-6 col-sm-12 col-xs-12">
             <FaMoneyBillAlt size={60} />
             <br />
             <br />
@@ -37,7 +37,7 @@ export default function WhatWeOffer() {
               Learn more
             </Link>
           </div>
-          <div className="col-md-4 col-sm-12 col-xs-12">
+          {/* <div className="col-md-4 col-sm-12 col-xs-12">
             <FaUserGraduate size={60} />
             <br />
             <br />
@@ -50,7 +50,7 @@ export default function WhatWeOffer() {
             <Link to="/donors" className="btn btn-outline-primary">
               Learn more
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
