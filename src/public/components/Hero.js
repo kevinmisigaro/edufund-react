@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import img from "../../assets/img/homeimage.jpg";
+import img from "../../assets/img/homeimage2.jpg";
 
 export default function Hero() {
   return (

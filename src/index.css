@@ -11,3 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.reveal{
+  position: absolute;
+  top: 390px;
+  left: 285px;
+}

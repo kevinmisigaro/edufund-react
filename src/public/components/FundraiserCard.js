@@ -5,12 +5,12 @@ import { Link } from "react-router-dom";
 
 export default function FundraiserCard(props) {
   return (
-    <div className="col-md-3 mb-3">
+    <div className="col-md-4 mb-4">
       <Link
         style={{ textDecoration: "none", color: "black" }}
         to={`/fundraiser/${props.fundraiser.id}`}
       >
-        <div className="card shadow" style={{ width: "16rem" }}>
+        <div className="card shadow" style={{ width: "18rem" }}>
           <div
             style={{
               height: "7rem",

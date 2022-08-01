@@ -12,27 +12,27 @@ export default function HowItWorks() {
           <FiUserPlus size={40} />
           <h5 className="mt-3">Create an account</h5>
           <p style={{ fontSize: "12pt" }}>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s
+            Set up your account in a few minutes and get started with your
+            fundraiser. Enter all relevant information that will inspire donors
+            to support your campaign
           </p>
         </div>
         <div className="col-md-4 col-sm-12 col-xs-12 mb-2">
           <FiBookmark size={40} />
           <h5 className="mt-3">Create a fundraiser</h5>
           <p style={{ fontSize: "12pt" }}>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s
+            Let the world know about your story through well detailed
+            information about your campaign. Fundraisers with photos and video
+            raises fund faster.
           </p>
         </div>
         <div className="col-md-4 col-sm-12 col-xs-12 mb-2">
           <FiGift size={40} />
           <h5 className="mt-3">Recieve donations</h5>
           <p style={{ fontSize: "12pt" }}>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s
+            Upon successful fundraising, Edufund works with you to verify your
+            admission documents and connect with your preferred school for
+            disbursement.
           </p>
         </div>
       </div>

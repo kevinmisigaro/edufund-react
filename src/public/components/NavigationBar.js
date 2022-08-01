@@ -32,7 +32,7 @@ export default function NavigationBar() {
                 <b>Who we are</b>
               </Link>
             </li>
-            {localStorage.getItem("token") == null ? (
+            {localStorage.getItem("token") == null && (
               <>
                 <li className="nav-item">
                   <Link className="nav-link" to="/login">
@@ -45,39 +45,41 @@ export default function NavigationBar() {
                   </Link>
                 </li>
               </>
-            ) : (
-              <li className="nav-item">
-                <Link className="nav-link" to="/dashboard/fundraisers">
-                  <b>Dashboard</b>
-                </Link>
-              </li>
             )}
           </ul>
           <div className="d-flex flex-row justify-content-center">
-            <Link
-              to="/allfundraisers"
-              style={{
-                fontWeight: "bold",
-                background: "#4992e9",
-                color: "white",
-                textDecoration: "none",
-              }}
-              className="btn"
-            >
-              Donate
-            </Link>
-            <Link
-              to="/login"
-              style={{
-                fontWeight: "bold",
-                background: "#4992e9",
-                color: "white",
-                textDecoration: "none",
-              }}
-              className="btn ms-2"
-            >
-              Start a fundraiser
-            </Link>
+            {localStorage.getItem("token") == null ? (
+              <>
+                <Link
+                  to="/allfundraisers"
+                  style={{
+                    fontWeight: "bold",
+                    background: "#4992e9",
+                    color: "white",
+                    textDecoration: "none",
+                  }}
+                  className="btn"
+                >
+                  Donate
+                </Link>
+                <Link
+                  to="/login"
+                  style={{
+                    fontWeight: "bold",
+                    background: "#4992e9",
+                    color: "white",
+                    textDecoration: "none",
+                  }}
+                  className="btn ms-2"
+                >
+                  Start a fundraiser
+                </Link>
+              </>
+            ) : (
+              <Link to="/dashboard/fundraisers">
+                {JSON.parse(localStorage.getItem("user")).name}
+              </Link>
+            )}
           </div>
         </div>
       </div>
