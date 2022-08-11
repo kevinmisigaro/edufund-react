@@ -19,6 +19,7 @@ import AllFundraisers from './public/AllFundraisers';
 import AboutUs from './public/AboutUs';
 import Notifications from './dashboard/Notifications';
 import { Provider } from 'jotai';
+import EditFundraiser from './dashboard/EditFundraiser';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
           <Route path="funddetails/:id" element={<StudentFundraiserDetails />} />
           <Route path='fundraisersuccess' element={<FundraiserSuccess/>} />
           <Route path='notifications' element={<Notifications/>} />
+          <Route path="editfund/:id" element={<EditFundraiser />} />
         </Route>
       </Routes>
       <ToastContainer/>
