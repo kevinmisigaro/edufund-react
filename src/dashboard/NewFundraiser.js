@@ -5,7 +5,6 @@ import StepTwo from "./steps/StepTwo";
 import StepThree from "./steps/StepThree";
 
 export default function NewFundraiser() {
-
   const prevStyle = {
     background: "#35c2f0",
     color: "white",
@@ -19,37 +18,18 @@ export default function NewFundraiser() {
     border: "1px solid #35c2f0",
   };
 
-  const [values, setValues] = useState({
-    qualification: "",
-    level: "",
-    amount: "",
-    course: "",
-    destination: "",
-    background: "",
-    currency: "",
-    country: "",
-    reason: "",
-    image: "",
-    video: "",
-    offer: "",
-    title: "",
-    story: "",
-    repay: "",
-    timeline: "",
-  });
-
   const steps = [
     {
       name: "Admission",
-      component: <StepOne values={values} setValues={setValues} />,
+      component: <StepOne />,
     },
     {
       name: "Fundraiser Info",
-      component: <StepTwo values={values} setValues={setValues} />,
+      component: <StepTwo />,
     },
     {
       name: "Reasons",
-      component: <StepThree values={values} setValues={setValues} />,
+      component: <StepThree />,
     },
   ];
 

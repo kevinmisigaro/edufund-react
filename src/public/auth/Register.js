@@ -163,7 +163,7 @@ export default function Register() {
             <form onSubmit={handleSubmit}>
               <div className="row" style={{ textAlign: "left" }}>
                 <div className="col-md-6 mb-3">
-                  <label>Fullname</label>
+                  <label>Fullname <span className="text-danger">*</span></label>
                   <input
                     type="text"
                     onChange={handleNameChange}
@@ -172,7 +172,7 @@ export default function Register() {
                   />
                 </div>
                 <div className="col-md-6 mb-3">
-                  <label>Email</label>
+                  <label>Email <span className="text-danger">*</span></label>
                   <input
                     className="form-control"
                     type="email"
@@ -183,7 +183,7 @@ export default function Register() {
                 </div>
 
                 <div className="col-md-6 mb-3">
-                  <label>City</label>
+                  <label>City <span className="text-danger">*</span></label>
                   <input
                     className="form-control"
                     type="text"
@@ -194,7 +194,7 @@ export default function Register() {
                 </div>
 
                 <div className="col-md-6 mb-3">
-                  <label>Country of residence</label>
+                  <label>Country of residence <span className="text-danger">*</span></label>
                   <select
                     className="form-control"
                     onChange={handleCountryChange}
@@ -220,7 +220,7 @@ export default function Register() {
                 </div>
 
                 <div className="col-md-6 mb-3">
-                  <label>Gender</label>
+                  <label>Gender <span className="text-danger">*</span></label>
                   <select
                     className="form-control"
                     style={inputStyle}
@@ -235,7 +235,7 @@ export default function Register() {
                 </div>
 
                 <div className="col-md-6 mb-3">
-                  <label>Password</label>
+                  <label>Password <span className="text-danger">*</span></label>
                   <input
                     className="form-control"
                     style={inputStyle}

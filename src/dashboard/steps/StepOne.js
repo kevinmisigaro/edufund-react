@@ -1,7 +1,16 @@
-import React from "react";
+import { useAtom } from "jotai";
+import React, { useState } from "react";
+import { Modal } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import { fundraiserAtom } from "../../store/atoms/NewFundraiserAtom";
 
-export default function StepOne({ values, setValues }) {
+export default function StepOne() {
   const offers = ["Select option", "Yes", "No"];
+  const [showReject, setShowReject] = useState(false);
+  const handleCloseReject = () => setShowReject(false);
+  const handleShowReject = () => setShowReject(true);
+  const navigate = useNavigate();
+  const [values, setValues] = useAtom(fundraiserAtom)
 
   const handleOfferChange = (e) => {
     e.persist();
@@ -9,7 +18,15 @@ export default function StepOne({ values, setValues }) {
       ...values,
       offer: e.target.value,
     });
-    localStorage.setItem("offer", e.target.value);
+
+    if (e.target.value == "No") {
+      handleShowReject();
+    } 
+  };
+
+  const goBack = () => {
+    handleCloseReject();
+    navigate("/dashboard/fundraisers");
   };
 
   return (
@@ -24,7 +41,7 @@ export default function StepOne({ values, setValues }) {
           className="form-control"
           onChange={handleOfferChange}
           style={{ width: "40%" }}
-          defaultValue={localStorage.getItem("offer")}
+          defaultValue={values.offer}
         >
           {offers.map((x) => (
             <option value={x} key={x}>
@@ -33,6 +50,26 @@ export default function StepOne({ values, setValues }) {
           ))}
         </select>
       </div>
+
+      <Modal show={showReject} onHide={handleCloseReject} centered>
+        <Modal.Header closeButton>
+          <Modal.Title></Modal.Title>
+        </Modal.Header>
+        <Modal.Body className="text-center">
+          <p>
+            We are happy to see your interest in raising funding for your
+            studies, but before you can start your fundraiser, be sure to have
+            secured admission with your preferred school. You will be required
+            to upload your admission letter.</p>
+          <button
+            type="button"
+            onClick={goBack}
+            className="btn btn-primary mt-3"
+          >
+            Go back
+          </button>
+        </Modal.Body>
+      </Modal>
     </div>
   );
 }

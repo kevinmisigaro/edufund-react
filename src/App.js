@@ -18,10 +18,12 @@ import StudentFundraiserDetails from './dashboard/StudentFundraiserDetails';
 import AllFundraisers from './public/AllFundraisers';
 import AboutUs from './public/AboutUs';
 import Notifications from './dashboard/Notifications';
+import { Provider } from 'jotai';
 
 function App() {
   return (
-    <div className="App">
+    <Provider>
+      <div className="App">
       <Routes>
         <Route path='/' element={<Landing/>} />
         <Route path="/students" element={<Students/>} />
@@ -43,6 +45,7 @@ function App() {
       </Routes>
       <ToastContainer/>
     </div>
+    </Provider>
   );
 }
 

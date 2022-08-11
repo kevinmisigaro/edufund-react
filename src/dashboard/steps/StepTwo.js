@@ -1,8 +1,12 @@
 import axios from "axios";
+import { useAtom } from "jotai";
 import React, { useEffect, useState } from "react";
+import { fundraiserAtom } from "../../store/atoms/NewFundraiserAtom";
 
-export default function StepTwo({ values, setValues }) {
+export default function StepTwo() {
   const [countries, setCountries] = useState([]);
+  const [values, setValues] = useAtom(fundraiserAtom)
+  
   const currencies = [
     "Choose currency",
     "TZS",
@@ -34,21 +38,6 @@ export default function StepTwo({ values, setValues }) {
         value.data.filter((item) => countryData.includes(item.name))
       );
     });
-    setValues({
-      ...values,
-      video: localStorage.getItem("video"),
-      title: localStorage.getItem("title"),
-      level: localStorage.getItem("level"),
-      currency: localStorage.getItem("currency"),
-      level: localStorage.getItem("level"),
-      currency: localStorage.getItem("currency"),
-      amount: localStorage.getItem("amount"),
-      timeline: localStorage.getItem("timeline"),
-      degree: localStorage.getItem("degree"),
-      course: localStorage.getItem("course"),
-      destination: localStorage.getItem("destination"),
-      country: localStorage.getItem("country"),
-    });
   }, []);
 
   const handleVideoChange = (e) => {
@@ -57,7 +46,6 @@ export default function StepTwo({ values, setValues }) {
       ...values,
       video: e.target.value,
     });
-    localStorage.setItem("video", e.target.value);
   };
 
   const handleTitleChange = (e) => {
@@ -66,7 +54,6 @@ export default function StepTwo({ values, setValues }) {
       ...values,
       title: e.target.value,
     });
-    localStorage.setItem("title", e.target.value);
   };
 
   const handleLevelChange = (e) => {
@@ -75,7 +62,6 @@ export default function StepTwo({ values, setValues }) {
       ...values,
       level: e.target.value,
     });
-    localStorage.setItem("level", e.target.value);
   };
 
   const handleCurrencyChange = (e) => {
@@ -84,7 +70,6 @@ export default function StepTwo({ values, setValues }) {
       ...values,
       currency: e.target.value,
     });
-    localStorage.setItem("currency", e.target.value);
   };
 
   const handleAmountChange = (e) => {
@@ -93,7 +78,6 @@ export default function StepTwo({ values, setValues }) {
       ...values,
       amount: e.target.value,
     });
-    localStorage.setItem("amount", e.target.value);
   };
 
   const handleTimelineChange = (e) => {
@@ -102,7 +86,6 @@ export default function StepTwo({ values, setValues }) {
       ...values,
       timeline: e.target.value,
     });
-    localStorage.setItem("timeline", e.target.value);
   };
 
   const handleDegreeChange = (e) => {
@@ -111,7 +94,6 @@ export default function StepTwo({ values, setValues }) {
       ...values,
       degree: e.target.value,
     });
-    localStorage.setItem("degree", e.target.value);
   };
 
   const handleCourseChange = (e) => {
@@ -120,7 +102,6 @@ export default function StepTwo({ values, setValues }) {
       ...values,
       course: e.target.value,
     });
-    localStorage.setItem("course", e.target.value);
   };
 
   const handleDestinationChange = (e) => {
@@ -129,7 +110,6 @@ export default function StepTwo({ values, setValues }) {
       ...values,
       destination: e.target.value,
     });
-    localStorage.setItem("destination", e.target.value);
   };
 
   const handleCountryChange = (e) => {
@@ -138,7 +118,6 @@ export default function StepTwo({ values, setValues }) {
       ...values,
       country: e.target.value,
     });
-    localStorage.setItem("country", e.target.value);
   };
 
   const qualifications = [
@@ -199,7 +178,7 @@ export default function StepTwo({ values, setValues }) {
             className="form-control"
             onChange={handleTitleChange}
             type="text"
-            value={localStorage.getItem("title")}
+            value={values.title}
           />
         </div>
         <div className="col">
@@ -208,7 +187,7 @@ export default function StepTwo({ values, setValues }) {
           </label>
           <select
             className="form-control"
-            defaultValue={localStorage.getItem("timeline")}
+            defaultValue={values.timeline}
             onChange={handleTimelineChange}
           >
             {timelines.map((x) => (
@@ -227,7 +206,7 @@ export default function StepTwo({ values, setValues }) {
           <input
             className="form-control"
             type="text"
-            value={localStorage.getItem("video")}
+            value={values.video}
             onChange={handleVideoChange}
           />
         </div>
@@ -241,7 +220,7 @@ export default function StepTwo({ values, setValues }) {
           </label>
           <select
             className="form-control"
-            defaultValue={localStorage.getItem("degree")}
+            defaultValue={values.degree}
             onChange={handleDegreeChange}
           >
             {qualifications.map((x) => (
@@ -257,7 +236,7 @@ export default function StepTwo({ values, setValues }) {
           </label>
           <select
             className="form-control"
-            defaultValue={localStorage.getItem("level")}
+            defaultValue={values.level}
             onChange={handleLevelChange}
           >
             {levels.map((c) => (
@@ -276,7 +255,7 @@ export default function StepTwo({ values, setValues }) {
           </label>
           <select
             className="form-control"
-            defaultValue={localStorage.getItem("currency")}
+            defaultValue={values.currency}
             onChange={handleCurrencyChange}
           >
             {currencies.map((c) => (
@@ -291,7 +270,7 @@ export default function StepTwo({ values, setValues }) {
             Fundraising target <span className="text-danger">*</span>
           </label>
           <input
-            value={localStorage.getItem("amount")}
+            value={values.amount}
             className="form-control"
             onChange={handleAmountChange}
             type="number"
@@ -305,7 +284,7 @@ export default function StepTwo({ values, setValues }) {
             University of choice <span className="text-danger">*</span>
           </label>
           <input
-            value={localStorage.getItem("destination")}
+            value={values.destination}
             className="form-control"
             type="text"
             onChange={handleDestinationChange}
@@ -321,7 +300,7 @@ export default function StepTwo({ values, setValues }) {
           <input
             className="form-control"
             type="text"
-            value={localStorage.getItem("course")}
+            value={values.course}
             onChange={handleCourseChange}
           />
         </div>
@@ -331,7 +310,7 @@ export default function StepTwo({ values, setValues }) {
           </label>
           <select
             className="form-control"
-            defaultValue={localStorage.getItem("country")}
+            defaultValue={values.country}
             onChange={handleCountryChange}
           >
             {countries.map((c) => (

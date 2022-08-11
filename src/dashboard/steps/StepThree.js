@@ -1,20 +1,16 @@
 import axios from "axios";
+import { useAtom } from "jotai";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import {
+  fundraiserAtom,
+  fundraiserImageAtom,
+} from "../../store/atoms/NewFundraiserAtom";
 
-export default function StepThree({ values, setValues }) {
-  useEffect(() => {
-    setValues({
-      ...values,
-      background: localStorage.getItem("background"),
-      reason: localStorage.getItem("reason"),
-      story: localStorage.getItem("story"),
-      repay: localStorage.getItem("repay"),
-    });
-  }, []);
-
-  const [selectedImage, setSelectedImage] = useState(null);
+export default function StepThree() {
+  const [selectedImage, setSelectedImage] = useAtom(fundraiserImageAtom);
+  const [values, setValues] = useAtom(fundraiserAtom);
 
   const handleBackgroundChange = (e) => {
     e.persist();
@@ -22,7 +18,6 @@ export default function StepThree({ values, setValues }) {
       ...values,
       background: e.target.value,
     });
-    localStorage.setItem("background", e.target.value);
   };
 
   const handleReasonChange = (e) => {
@@ -31,7 +26,6 @@ export default function StepThree({ values, setValues }) {
       ...values,
       reason: e.target.value,
     });
-    localStorage.setItem("reason", e.target.value);
   };
 
   const handleStoryChange = (e) => {
@@ -40,7 +34,6 @@ export default function StepThree({ values, setValues }) {
       ...values,
       story: e.target.value,
     });
-    localStorage.setItem("story", e.target.value);
   };
 
   const fundraisingReasongs = [
@@ -59,7 +52,6 @@ export default function StepThree({ values, setValues }) {
       ...values,
       repay: e.target.value,
     });
-    localStorage.setItem("repay", e.target.value);
   };
 
   const [loading, setLoading] = useState(false);
@@ -73,17 +65,17 @@ export default function StepThree({ values, setValues }) {
   const handleSubmit = () => {
     setLoading(true);
 
-    if (!localStorage.getItem("offer")) {
+    if (values.offer == "No") {
       return toast.error("Please return after you have secured admission");
     }
 
     if (
-      localStorage.getItem("degree") === "" ||
-      localStorage.getItem("reason") === "" ||
-      localStorage.getItem("currency") === "" ||
-      localStorage.getItem("country") === "" ||
-      localStorage.getItem("level") === "" ||
-      localStorage.getItem("timeline") === ""
+      values.degree === "" ||
+      values.reason === "" ||
+      values.currency === "" ||
+      values.currency === "" ||
+      values.level === "" ||
+      values.timeline === ""
     ) {
       setLoading(false);
       return toast.error("Please fill in all the details");
@@ -92,20 +84,20 @@ export default function StepThree({ values, setValues }) {
     const formData = new FormData();
     formData.append("image", selectedImage, selectedImage.name);
     formData.append("user_id", user.id);
-    formData.append("qualification", localStorage.getItem("degree"));
-    formData.append("level", localStorage.getItem("level"));
-    formData.append("study_destination", localStorage.getItem("destination"));
-    formData.append("background", localStorage.getItem("background"));
-    formData.append("amount", localStorage.getItem("amount"));
-    formData.append("currency", localStorage.getItem("currency"));
-    formData.append("country_id", localStorage.getItem("country"));
-    formData.append("course", localStorage.getItem("course"));
-    formData.append("reason_of_funding", localStorage.getItem("reason"));
-    formData.append("video", localStorage.getItem("video"));
-    formData.append("title", localStorage.getItem("title"));
-    formData.append("story", localStorage.getItem("story"));
-    formData.append("repay", localStorage.getItem("repay"));
-    formData.append("timeline", localStorage.getItem("timeline"));
+    formData.append("qualification", values.degree);
+    formData.append("level", values.level);
+    formData.append("study_destination", values.destination);
+    formData.append("background", values.background);
+    formData.append("amount", values.amount);
+    formData.append("currency", values.currency);
+    formData.append("country_id", values.country);
+    formData.append("course", values.course);
+    formData.append("reason_of_funding", values.reason);
+    formData.append("video", values.video);
+    formData.append("title", values.title);
+    formData.append("story", values.story);
+    formData.append("repay", values.repay);
+    formData.append("timeline", values.timeline);
 
     axios.defaults.headers.common[
       "Authorization"
@@ -115,25 +107,25 @@ export default function StepThree({ values, setValues }) {
       .post(`${process.env.REACT_APP_API_URL}/fundraiser/create`, formData)
       .then((res) => {
         console.log(res);
-
-        let keysToRemove = [
-          "timeline",
-          "repay",
-          "story",
-          "title",
-          "video",
-          "reason",
-          "course",
-          "country",
-          "currency",
-          "amount",
-          "background",
-          "destination",
-          "level",
-          "qualification",
-        ];
-
-        keysToRemove.forEach((k) => localStorage.removeItem(k));
+        setValues({
+          ...values,
+          degree: "",
+          level: "",
+          amount: "",
+          course: "",
+          destination: "",
+          background: "",
+          currency: "",
+          country: "",
+          reason: "",
+          image: "",
+          video: "",
+          offer: "",
+          title: "",
+          story: "",
+          repay: "",
+          timeline: "",
+        });
         setLoading(false);
         navigate("/dashboard/fundraisersuccess");
       })
@@ -183,7 +175,7 @@ export default function StepThree({ values, setValues }) {
           </label>
           <select
             className="form-control"
-            defaultValue={localStorage.getItem("reason")}
+            defaultValue={values.reason}
             onChange={handleReasonChange}
           >
             {fundraisingReasongs.map((c) => (
@@ -201,7 +193,7 @@ export default function StepThree({ values, setValues }) {
         <textarea
           onChange={handleBackgroundChange}
           className="form-control"
-          value={localStorage.getItem("background")}
+          value={values.background}
           rows="4"
         />
       </div>
@@ -210,7 +202,7 @@ export default function StepThree({ values, setValues }) {
           Tell your story <span className="text-danger">*</span>
         </label>
         <textarea
-          value={localStorage.getItem("story")}
+          value={values.story}
           onChange={handleStoryChange}
           className="form-control"
           rows="4"
@@ -226,7 +218,7 @@ export default function StepThree({ values, setValues }) {
           onChange={handleRepayChange}
           className="form-control"
           rows="4"
-          value={localStorage.getItem("repay")}
+          value={values.repay}
         />
       </div>
 

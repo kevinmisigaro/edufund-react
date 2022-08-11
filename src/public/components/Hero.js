@@ -15,7 +15,7 @@ export default function Hero() {
           style={{ textAlign: "left", marginTop: "5rem" }}
         >
           <br />
-          <h2 style={{ textAlign: "justify", fontSize: "2.0rem", color: 'white' }}>
+          <h2 style={{ textAlign: "left", fontSize: "2.0rem", color: 'white' }}>
             We facilitate inclusive access to education for all Africans through
             community financing.
           </h2>
