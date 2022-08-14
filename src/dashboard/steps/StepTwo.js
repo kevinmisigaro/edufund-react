@@ -218,6 +218,10 @@ export default function StepTwo() {
       name: "Oxford University",
     },
     {
+      countryID:226,
+      name:"University of Bristol"
+    },
+    {
       countryID: 226,
       name: "Cambridge University",
     },
@@ -454,7 +458,10 @@ export default function StepTwo() {
           </select>
         </div>
         <div className="col-md-6 mb-4">
-          <label>Your grade if in college (optional)</label>
+          <label>
+          Your final/expected grade
+          <span className="text-danger">*</span>
+          </label>
           <select
             className="form-control"
             value={values.grade}

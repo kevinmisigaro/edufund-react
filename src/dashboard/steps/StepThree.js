@@ -11,6 +11,7 @@ import {
 export default function StepThree() {
   const [selectedImage, setSelectedImage] = useAtom(fundraiserImageAtom);
   const [values, setValues] = useAtom(fundraiserAtom);
+  const [submissionCheck, setSubmissionCheck] = useState(false)
 
   const handleBackgroundChange = (e) => {
     e.persist();
@@ -19,6 +20,10 @@ export default function StepThree() {
       background: e.target.value,
     });
   };
+
+  const handleSubmissionCheck = () => {
+    setSubmissionCheck(!submissionCheck)
+  }
 
   const handleReasonChange = (e) => {
     e.persist();
@@ -65,7 +70,13 @@ export default function StepThree() {
   const handleSubmit = () => {
     setLoading(true);
 
+    if(!submissionCheck){
+      setLoading(false)
+      return toast.error('You have not agreed that funds will only be sent to your university.')
+    }
+
     if (values.offer == "No") {
+      setLoading(false)
       return toast.error("Please return after you have secured admission");
     }
 
@@ -214,7 +225,7 @@ export default function StepThree() {
         />
       </div>
 
-      <div className="mb-4">
+      <div className="mb-3">
         <label>
           How will you pay foward if you are able to achieve your fundraising
           goal <span className="text-danger">*</span>
@@ -225,6 +236,15 @@ export default function StepThree() {
           rows="4"
           value={values.repay}
         />
+      </div>
+
+      <div className="mb-5">
+      <div class="form-check">
+      <input class="form-check-input" onChange={handleSubmissionCheck} type="checkbox" value={submissionCheck} />
+      <label class="form-check-label">
+      You accept that funds will never be sent directly to you, only to the university you have selected.
+      </label>
+    </div>
       </div>
 
       <div className="mb-4 text-center">

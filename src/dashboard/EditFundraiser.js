@@ -352,6 +352,10 @@ export default function EditFundraiser() {
       name: "Cambridge University",
     },
     {
+      countryID:226,
+      name:"University of Bristol"
+    },
+    {
       countryID: 226,
       name: "London School of Economics",
     },
