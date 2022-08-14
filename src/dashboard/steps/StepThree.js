@@ -75,7 +75,8 @@ export default function StepThree() {
       values.currency === "" ||
       values.currency === "" ||
       values.level === "" ||
-      values.timeline === ""
+      values.timeline === "" ||
+      values.ageRange === "" 
     ) {
       setLoading(false);
       return toast.error("Please fill in all the details");
@@ -98,6 +99,8 @@ export default function StepThree() {
     formData.append("story", values.story);
     formData.append("repay", values.repay);
     formData.append("timeline", values.timeline);
+    formData.append("ageRange", values.ageRange);
+    formData.append("grade", values.grade);
 
     axios.defaults.headers.common[
       "Authorization"
@@ -110,6 +113,8 @@ export default function StepThree() {
         setValues({
           ...values,
           degree: "",
+          grade: "",
+          ageRange: "",
           level: "",
           amount: "",
           course: "",

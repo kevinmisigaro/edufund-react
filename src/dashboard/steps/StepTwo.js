@@ -5,8 +5,8 @@ import { fundraiserAtom } from "../../store/atoms/NewFundraiserAtom";
 
 export default function StepTwo() {
   const [countries, setCountries] = useState([]);
-  const [values, setValues] = useAtom(fundraiserAtom)
-  
+  const [values, setValues] = useAtom(fundraiserAtom);
+
   const currencies = [
     "Choose currency",
     "TZS",
@@ -18,6 +18,7 @@ export default function StepTwo() {
   ];
 
   const countryData = [
+    "United Kingdom",
     "Tanzania, United Republic of",
     "China",
     "Kenya",
@@ -26,10 +27,230 @@ export default function StepTwo() {
     "Nigeria",
     "Uganda",
     "Australia",
-    "New Zealand",
+    "Ghana",
     "Canada",
-    "Rwanda",
-    "United Kingdom",
+  ];
+
+  const schools = [
+    {
+      countryID: 1,
+      name: "Illinois Institude of Technology",
+    },
+    {
+      countryID: 1,
+      name: "Carnegie Mellon University",
+    },
+    {
+      countryID: 1,
+      name: "Masschusetts Institude of Technology (MIT)",
+    },
+    {
+      countryID: 1,
+      name: "Northeastern University",
+    },
+    {
+      countryID: 1,
+      name: "Columbia University",
+    },
+    {
+      countryID: 2,
+      name: "Univerity of Waterloo",
+    },
+    {
+      countryID: 2,
+      name: "University of Calgary",
+    },
+    {
+      countryID: 2,
+      name: "University of Ottawa",
+    },
+    {
+      countryID: 2,
+      name: "McMaster University",
+    },
+    {
+      countryID: 2,
+      name: "University of Alberta",
+    },
+    {
+      countryID: 15,
+      name: "The University of Western Australia",
+    },
+    {
+      countryID: 15,
+      name: "Griffith University",
+    },
+    {
+      countryID: 15,
+      name: "University of Canberra",
+    },
+    {
+      countryID: 15,
+      name: "Queensland University of Technology",
+    },
+    {
+      countryID: 15,
+      name: "University of Technology Sydney",
+    },
+    {
+      countryID: 45,
+      name: "Beijing Language and Culture University (BCLU)",
+    },
+    {
+      countryID: 45,
+      name: "University of International Business and Economics (UIBE)",
+    },
+    {
+      countryID: 45,
+      name: "Peking University",
+    },
+    {
+      countryID: 45,
+      name: "Shanghai Jiaotong University (SJTU)",
+    },
+    {
+      countryID: 45,
+      name: "Zhejiang University (ZJU)",
+    },
+    {
+      countryID: 83,
+      name: "University of Development Studies",
+    },
+    {
+      countryID: 83,
+      name: "University of Cape Coast",
+    },
+    {
+      countryID: 83,
+      name: "University of Ghana",
+    },
+    {
+      countryID: 83,
+      name: "Kwame Nkrumah University of Science and Technology",
+    },
+    {
+      countryID: 83,
+      name: "Asheshi University",
+    },
+    {
+      countryID: 112,
+      name: "University of Nairobi",
+    },
+    {
+      countryID: 112,
+      name: "Moi University",
+    },
+    {
+      countryID: 112,
+      name: "Jomo Kenyatta University of Agriculture and Technology",
+    },
+    {
+      countryID: 112,
+      name: "Egerton University",
+    },
+    {
+      countryID: 112,
+      name: "Kenyatta University",
+    },
+    {
+      countryID: 158,
+      name: "University of Lagos",
+    },
+    {
+      countryID: 158,
+      name: "Obafemi Awolowo University",
+    },
+    {
+      countryID: 158,
+      name: "University of Ibadan",
+    },
+    {
+      countryID: 158,
+      name: "Convenant University",
+    },
+    {
+      countryID: 158,
+      name: "University of Nigeria",
+    },
+    {
+      countryID: 197,
+      name: "University of Cape Coast (SA)",
+    },
+    {
+      countryID: 197,
+      name: "University of Kwazulu-Natal",
+    },
+    {
+      countryID: 197,
+      name: "University of Pretoria",
+    },
+    {
+      countryID: 197,
+      name: "University of Johannesburg",
+    },
+    {
+      countryID: 197,
+      name: "Stellenbosch",
+    },
+    {
+      countryID: 212,
+      name: "University of Dar es Salaam",
+    },
+    {
+      countryID: 212,
+      name: "Nelson Mandela African Institution of Science and Technology",
+    },
+    {
+      countryID: 212,
+      name: "University of Dodoma (UDOM)",
+    },
+    {
+      countryID: 223,
+      name: "Kampala International University",
+    },
+    {
+      countryID: 223,
+      name: "Makerere University",
+    },
+
+    {
+      countryID: 226,
+      name: "Oxford University",
+    },
+    {
+      countryID: 226,
+      name: "Cambridge University",
+    },
+    {
+      countryID: 226,
+      name: "London School of Economics",
+    },
+    {
+      countryID: 226,
+      name: "University of Manchester",
+    },
+    {
+      countryID: 226,
+      name: "University College London",
+    },
+  ];
+
+  const handleCountryChange = (e) => {
+    e.persist();
+    setValues({
+      ...values,
+      country: e.target.value,
+    });
+  };
+
+  const ageRanges = ["12-18", "18-21", "22-27", "28-35", "36-40"];
+
+  const grades = [
+    "First class",
+    "Second class",
+    "Upper second class",
+    "Lower second class",
+    "Third class",
   ];
 
   useEffect(() => {
@@ -37,8 +258,25 @@ export default function StepTwo() {
       setCountries(
         value.data.filter((item) => countryData.includes(item.name))
       );
+      console.log(value.data.filter((item) => countryData.includes(item.name)));
     });
   }, []);
+
+  const handleGradeChange = (e) => {
+    e.persist();
+    setValues({
+      ...values,
+      grade: e.target.value,
+    });
+  };
+
+  const handleRangeChange = (e) => {
+    e.persist();
+    setValues({
+      ...values,
+      ageRange: e.target.value,
+    });
+  };
 
   const handleVideoChange = (e) => {
     e.persist();
@@ -112,14 +350,6 @@ export default function StepTwo() {
     });
   };
 
-  const handleCountryChange = (e) => {
-    e.persist();
-    setValues({
-      ...values,
-      country: e.target.value,
-    });
-  };
-
   const qualifications = [
     "Choose your qualification",
     "Secondary school",
@@ -169,8 +399,8 @@ export default function StepTwo() {
 
   return (
     <div style={{ textAlign: "left" }}>
-      <div className="row mb-4">
-        <div className="col">
+      <div className="row">
+        <div className="col-md-6 mb-4">
           <label>
             Fundraising title <span className="text-danger">*</span>
           </label>
@@ -181,7 +411,7 @@ export default function StepTwo() {
             value={values.title}
           />
         </div>
-        <div className="col">
+        <div className="col-md-6 mb-4">
           <label>
             Fundrasing duration <span className="text-danger">*</span>
           </label>
@@ -197,11 +427,7 @@ export default function StepTwo() {
             ))}
           </select>
         </div>
-      </div>
-
-      <div className="row mb-4">
-       
-        <div className="col-md-12">
+        <div className="col-md-6 mb-4">
           <label>Upload embedded youtube video link (optional) </label>
           <input
             className="form-control"
@@ -210,10 +436,38 @@ export default function StepTwo() {
             onChange={handleVideoChange}
           />
         </div>
-      </div>
-
-      <div className="row mb-3">
-        <div className="col">
+        <div className="col-md-6 mb-4">
+          <label>
+            Your age range
+            <span className="text-danger">*</span>
+          </label>
+          <select
+            className="form-control"
+            value={values.ageRange}
+            onChange={handleRangeChange}
+          >
+            {ageRanges.map((x) => (
+              <option value={x} key={x}>
+                {x}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="col-md-6 mb-4">
+          <label>Your grade if in college (optional)</label>
+          <select
+            className="form-control"
+            value={values.grade}
+            onChange={handleGradeChange}
+          >
+            {grades.map((c) => (
+              <option key={c} value={c}>
+                {c}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="col-md-6 mb-4">
           <label>
             Your highest level of qualification{" "}
             <span className="text-danger">*</span>
@@ -230,26 +484,8 @@ export default function StepTwo() {
             ))}
           </select>
         </div>
-        <div className="col">
-          <label>
-            Proposed level of study <span className="text-danger">*</span>
-          </label>
-          <select
-            className="form-control"
-            defaultValue={values.level}
-            onChange={handleLevelChange}
-          >
-            {levels.map((c) => (
-              <option key={c} value={c}>
-                {c}
-              </option>
-            ))}
-          </select>
-        </div>
-      </div>
 
-      <div className="row mb-3">
-        <div className="col">
+        <div className="col-md-6 mb-4">
           <label>
             Currency <span className="text-danger">*</span>
           </label>
@@ -265,7 +501,7 @@ export default function StepTwo() {
             ))}
           </select>
         </div>
-        <div className="col">
+        <div className="col-md-6 mb-4">
           <label>
             Fundraising target <span className="text-danger">*</span>
           </label>
@@ -276,35 +512,7 @@ export default function StepTwo() {
             type="number"
           />
         </div>
-      </div>
-
-      <div className="row mb-3">
-        <div className="col">
-          <label>
-            University of choice <span className="text-danger">*</span>
-          </label>
-          <input
-            value={values.destination}
-            className="form-control"
-            type="text"
-            onChange={handleDestinationChange}
-          />
-        </div>
-      </div>
-
-      <div className="row mb-3">
-        <div className="col">
-          <label>
-            Proposed course of study <span className="text-danger">*</span>
-          </label>
-          <input
-            className="form-control"
-            type="text"
-            value={values.course}
-            onChange={handleCourseChange}
-          />
-        </div>
-        <div className="col">
+        <div className="col-md-6 mb-4">
           <label>
             Proposed Country of Study <span className="text-danger">*</span>
           </label>
@@ -316,6 +524,52 @@ export default function StepTwo() {
             {countries.map((c) => (
               <option key={c.id} value={c.id}>
                 {c.name}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="col-md-6 mb-4">
+          <label>
+            University of choice <span className="text-danger">*</span>
+          </label>
+          <select
+            className="form-control"
+            value={values.destination}
+            onChange={handleDestinationChange}
+          >
+            {schools
+              .filter((school) => school.countryID == values.country)
+              .map((x) => (
+                <option value={x.name} key={x.name}>
+                  {x.name}
+                </option>
+              ))}
+          </select>
+        </div>
+
+        <div className="col-md-6 mb-4">
+          <label>
+            Proposed course of study <span className="text-danger">*</span>
+          </label>
+          <input
+            className="form-control"
+            type="text"
+            value={values.course}
+            onChange={handleCourseChange}
+          />
+        </div>
+        <div className="col-md-6 mb-4">
+          <label>
+            Proposed level of study <span className="text-danger">*</span>
+          </label>
+          <select
+            className="form-control"
+            defaultValue={values.level}
+            onChange={handleLevelChange}
+          >
+            {levels.map((c) => (
+              <option key={c} value={c}>
+                {c}
               </option>
             ))}
           </select>

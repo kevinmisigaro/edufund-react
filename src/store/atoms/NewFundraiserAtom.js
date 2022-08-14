@@ -17,6 +17,8 @@ export const fundraiserAtom = atom({
     story: "",
     repay: "",
     timeline: "",
+    ageRange: "",
+    grade: ""
 });
 
 export const fundraiserImageAtom = atom(null);
