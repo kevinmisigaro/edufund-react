@@ -9,7 +9,9 @@ export default function WhatWeOffer() {
         <h3 style={{ fontWeight: "500" }}>What we offer</h3>
         <br />
         <div className="row mt-3">
-          <div className="col-md-6 col-sm-12 col-xs-12">
+          <div className="col-md-6 col-sm-12 col-xs-12 mb-5">
+           <div className="card shadow" style={{width: "100%", background:"white"}}>
+            <div className="card-body px-4 py-5">
             <FaUsers size={60} />
             <br />
             <br />
@@ -22,9 +24,13 @@ export default function WhatWeOffer() {
             <Link className="btn btn-outline-primary" to="/students">
               Learn more
             </Link>
+            </div>
+           </div>
           </div>
-          <div className="col-md-6 col-sm-12 col-xs-12">
-            <FaMoneyBillAlt size={60} />
+          <div className="col-md-6 col-sm-12 col-xs-12 mb-5">
+            <div className="card shadow" style={{width:"100%"}}>
+              <div className="card-body px-4 py-5">
+              <FaMoneyBillAlt size={60} />
             <br />
             <br />
             <b>Donors</b>
@@ -36,6 +42,8 @@ export default function WhatWeOffer() {
             <Link to="/donors" className="btn btn-outline-primary">
               Learn more
             </Link>
+              </div>
+            </div>
           </div>
           {/* <div className="col-md-4 col-sm-12 col-xs-12">
             <FaUserGraduate size={60} />

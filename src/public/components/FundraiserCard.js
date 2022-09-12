@@ -25,9 +25,9 @@ export default function FundraiserCard(props) {
           <div className="card-body">
             <b>{props.fundraiser?.title}</b>
             <br />
-            {/* <small>
-              Created {moment(props.fundraiser?.created_at).fromNow()}
-            </small> */}
+            <small>
+              {props.fundraiser?.currency} {" "} {props.fundraiser?.scholarship_amount} <br/>
+            </small>
             <small>
             Ends in {" "}
             {moment(props.fundraiser?.end_date).toNow(true)}

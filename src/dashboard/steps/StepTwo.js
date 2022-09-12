@@ -237,6 +237,43 @@ export default function StepTwo() {
       countryID: 226,
       name: "University College London",
     },
+    {
+      countryID: 226,
+      name: "University of Warwick"
+    },
+    {
+      countryID: 226,
+      name: "University of Loughborough"
+    },
+    {
+      countryID: 226,
+      name: "University of Sussex"
+    },
+
+    {
+      countryID: 226,
+      name: "University of Surrey"
+    },
+    {
+      countryID: 226,
+      name: "University of Edinburgh"
+    },
+    {
+      countryID: 226,
+      name: "University of Portsmouth"
+    },
+    {
+      countryID: 226,
+      name: "Coventry University"
+    },
+    {
+      countryID: 226,
+      name: "University of Herefordshire"
+    },
+    {
+      countryID: 226,
+      name: "University of Birmingham"
+    },
   ];
 
   const handleCountryChange = (e) => {

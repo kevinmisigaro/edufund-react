@@ -34,7 +34,7 @@ export default function Landing() {
               <h4 style={{ fontWeight: "700" }}>Featured Fundraisers</h4>
             </div>
 
-            <div className="row">
+            <div className="d-flex flex-row flex-wrap justify-content-center">
               {fundraisers.map((x) => (
                 <FundraiserCard fundraiser={x} key={x.id} />
               ))}
@@ -54,7 +54,7 @@ export default function Landing() {
               </h5>
             </div>
 
-            <div className="row">
+            <div className="d-flex flex-row flex-wrap justify-content-center">
               {fundraisers.map((x) => (
                 <FundraiserCard fundraiser={x} key={x.id} />
               ))}
