@@ -32,6 +32,11 @@ export default function NavigationBar() {
                 <b>Who we are</b>
               </Link>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/events">
+                <b>Events</b>
+              </Link>
+            </li>
             {localStorage.getItem("token") == null && (
               <>
                 <li className="nav-item">

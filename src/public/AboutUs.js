@@ -38,7 +38,7 @@ do n their income.
         <div className="row">
           <div className="col-md-6">
             <p style={{ textAlign: "justify" }}>
-           
+{/*            
 
 Leaving over 200,000,000 young people uneducated will have adverse
 effect on Africa’s social and economic development and could cripple
@@ -58,7 +58,9 @@ student beneficiary is gainfully employed. The beneficiary student
 makes repayment in installments to impact investors that contributed to
 their university financial needs. The platform also allows philanthropists
 to donate to sponsoring a student to study in their university of choice on
-grant basis.
+grant basis. */}
+EduFund is a crowdfunding platform that enables underserved African youths to raise funding for their higher education. Our vision is to build the largest scholarships aggregator to help low-income students pursue their study goals at home and abroad.<br/><br/>
+Our intelligent platform matches students with funders including individual and institutional donors. Let us manage your scholarships- join us on our mission to create life-changing opportunities for 100,000 students through education!
             </p>
           </div>
           <div className="col-md-6">

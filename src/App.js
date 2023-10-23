@@ -20,6 +20,8 @@ import AboutUs from './public/AboutUs';
 import Notifications from './dashboard/Notifications';
 import { Provider } from 'jotai';
 import EditFundraiser from './dashboard/EditFundraiser';
+import Events from './public/Event';
+import GreenEarth from './public/events/GreenEarth';
 
 function App() {
   return (
@@ -30,10 +32,12 @@ function App() {
         <Route path="/students" element={<Students/>} />
         <Route path="/donors" element={<Donors/>} />
         <Route path="/about" element={<AboutUs />} />
+        <Route path="/events" element={<Events />} />
         <Route path='/login' element={<Login/>} />
         <Route path='/register' element={<Register/>} />
         <Route path='fundraiser/:id' element={<FundraiserDetails/>} />
         <Route path="/allfundraisers" element={<AllFundraisers/>} />
+        <Route path='/events/greenview' element={<GreenEarth />} />
         <Route path='/dashboard' element={<DashboardHome/>}>
           <Route path='fundraisers' element={<StudentFundraisers/>} />
           <Route path='donations' element={<StudentDonations/>} />
