@@ -27,10 +27,7 @@ to raise a CHILD
           </h3>
           <br />
           <p style={{textAlign: 'justify'}}>
-          Over 40% of Africa’s population is living under the poverty line (below
-$2 per day) and barely surviving everyday. This size of Africa’s
-population sees education as LUXURY as it’s not a primary need base
-do n their income.
+          Democratizing access to Education in Africa, will increase youth economic activities by over 40%. Offering accessible and quality education to Africa's 300,000,000  underrepresented population is the most sustainable investment that will transform the continent for good.
           </p>
         </div>
       </div>
