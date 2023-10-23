@@ -27,7 +27,7 @@ export default function Events() {
           <EventCard
             title="OPPORTUNITY FAIR AND EDUCATION STAKEHOLDER FORUM"
             date=" 17-18 November 2023"
-            location=" Yar'adua Conference Centre, Abuja"
+            location="Abuja"
             link="/events/greenview"
           />
 

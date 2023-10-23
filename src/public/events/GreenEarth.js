@@ -62,7 +62,7 @@ const GreenEarth = () => {
             >
               FUNDERS:
             </span>{" "}
-            Yar' adua Conference Centre, Abuja
+             Abuja
           </p>
 
           <p>
