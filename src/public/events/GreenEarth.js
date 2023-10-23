@@ -27,8 +27,16 @@ const GreenEarth = () => {
           </p>
         </div>
       </div>
-      <div className="container py-5 text-left">
-        <p>
+      <div className="container py-5">
+      
+
+        <div
+          style={{
+            textAlign: "left",
+          }}
+        >
+
+<p>
           A unique and exclusive opportunity for UK institutions to participate
           in the launch of our inaugural scholarships and to engage with key
           stakeholders including vice-chancellors and West African First Ladies.
@@ -77,11 +85,6 @@ const GreenEarth = () => {
           Expected dignitaries:
         </h6>
 
-        <div
-          style={{
-            textAlign: "left",
-          }}
-        >
           <p>List of some Dignitaries:</p>
           <ul>
             <li>Governors and first ladies of 36 states</li>

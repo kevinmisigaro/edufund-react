@@ -3,6 +3,7 @@ import bg from "../assets/img/students-standing-40.png";
 import NavigationBar from "./components/NavigationBar";
 import Footer from "./Footer";
 import EventCard from "./components/EventCard";
+import greenImg from "../assets/img/greenearth.jpeg";
 
 export default function Events() {
   return (
@@ -29,6 +30,10 @@ export default function Events() {
             location=" Yar'adua Conference Centre, Abuja"
             link="/events/greenview"
           />
+
+          <div className="col-md-8">
+            <img src={greenImg} alt=".." className="img-fluid" />
+          </div>
         </div>
       </div>
       <Footer />

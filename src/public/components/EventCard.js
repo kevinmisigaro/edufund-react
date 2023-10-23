@@ -9,7 +9,7 @@ const EventCard = ({ title, date, location, link }) => {
       <div
         style={{
           height: "150px",
-          backgroundColor: "green",
+          backgroundColor: "#0c4558",
           color: "white",
           textAlign: "center",
           display: "flex",
