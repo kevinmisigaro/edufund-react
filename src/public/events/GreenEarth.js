@@ -97,12 +97,13 @@ const GreenEarth = () => {
           </h6>
 
           <div className="row mb-5 mt-4">
-            <div className="col-md-3 mb-3">
+            <div className="col-md-4 mb-3">
               <div
                 style={{
                   backgroundImage: `url(${pic1})`,
                   width: "100%",
-                  height: "200px",
+                  height: "300px",
+                  backgroundPosition: 'center center',
                   backgroundSize: "cover",
                 }}
               ></div>
@@ -113,12 +114,13 @@ const GreenEarth = () => {
               </p>
             </div>
 
-            <div className="col-md-3 mb-3">
+            <div className="col-md-4 mb-3">
               <div
                 style={{
                   backgroundImage: `url(${pic2})`,
                   width: "100%",
-                  height: "200px",
+                  height: "300px",
+                  backgroundPosition: 'center center',
                   backgroundSize: "cover",
                 }}
               ></div>
@@ -131,12 +133,13 @@ const GreenEarth = () => {
               </p>
             </div>
 
-            <div className="col-md-3 mb-3">
+            <div className="col-md-4 mb-3">
               <div
                 style={{
                   backgroundImage: `url(${pic3})`,
                   width: "100%",
-                  height: "200px",
+                  height: "300px",
+                  backgroundPosition: 'center center',
                   backgroundSize: "cover",
                 }}
               ></div>
@@ -148,12 +151,13 @@ const GreenEarth = () => {
               </p>
             </div>
 
-            <div className="col-md-3 mb-3">
+            <div className="col-md-4 mb-3">
               <div
                 style={{
                   backgroundImage: `url(${pic4})`,
                   width: "100%",
-                  height: "200px",
+                  height: "300px",
+                  backgroundPosition: 'center center',
                   backgroundSize: "cover",
                 }}
               ></div>
@@ -165,12 +169,13 @@ const GreenEarth = () => {
               </p>
             </div>
 
-            <div className="col-md-3 mb-3">
+            <div className="col-md-4 mb-3">
               <div
                 style={{
                   backgroundImage: `url(${pic5})`,
                   width: "100%",
-                  height: "200px",
+                  height: "300px",
+                  backgroundPosition: 'center center',
                   backgroundSize: "cover",
                 }}
               ></div>
@@ -182,12 +187,13 @@ const GreenEarth = () => {
               </p>
             </div>
 
-            <div className="col-md-3 mb-3">
+            <div className="col-md-4 mb-3">
               <div
                 style={{
                   backgroundImage: `url(${pic6})`,
                   width: "100%",
-                  height: "200px",
+                  height: "300px",
+                  backgroundPosition: 'center center',
                   backgroundSize: "cover",
                 }}
               ></div>
@@ -199,12 +205,13 @@ const GreenEarth = () => {
               </p>
             </div>
 
-            <div className="col-md-3 mb-3">
+            <div className="col-md-4 mb-3">
               <div
                 style={{
                   backgroundImage: `url(${pic7})`,
                   width: "100%",
-                  height: "200px",
+                  height: "300px",
+                  backgroundPosition: 'center center',
                   backgroundSize: "cover",
                 }}
               ></div>
@@ -216,12 +223,13 @@ const GreenEarth = () => {
               </p>
             </div>
 
-            <div className="col-md-3 mb-3">
+            <div className="col-md-4 mb-3">
               <div
                 style={{
                   backgroundImage: `url(${pic8})`,
                   width: "100%",
-                  height: "200px",
+                  height: "300px",
+                  backgroundPosition: 'center center',
                   backgroundSize: "cover",
                 }}
               ></div>
@@ -233,12 +241,13 @@ const GreenEarth = () => {
               </p>
             </div>
 
-            <div className="col-md-3 mb-3">
+            <div className="col-md-4 mb-3">
               <div
                 style={{
                   backgroundImage: `url(${pic9})`,
                   width: "100%",
-                  height: "200px",
+                  height: "300px",
+                  backgroundPosition: 'center center',
                   backgroundSize: "cover",
                 }}
               ></div>
@@ -250,12 +259,13 @@ const GreenEarth = () => {
               </p>
             </div>
 
-            <div className="col-md-3 mb-3">
+            <div className="col-md-4 mb-3">
               <div
                 style={{
                   backgroundImage: `url(${pic10})`,
                   width: "100%",
-                  height: "200px",
+                  height: "300px",
+                  backgroundPosition: 'center center',
                   backgroundSize: "cover",
                 }}
               ></div>
@@ -267,12 +277,13 @@ const GreenEarth = () => {
               </p>
             </div>
 
-            <div className="col-md-3 mb-3">
+            <div className="col-md-4 mb-3">
               <div
                 style={{
                   backgroundImage: `url(${pic11})`,
                   width: "100%",
-                  height: "200px",
+                  height: "300px",
+                  backgroundPosition: 'center center',
                   backgroundSize: "cover",
                 }}
               ></div>
@@ -284,12 +295,13 @@ const GreenEarth = () => {
               </p>
             </div>
 
-            <div className="col-md-3 mb-3">
+            <div className="col-md-4 mb-3">
               <div
                 style={{
                   backgroundImage: `url(${pic12})`,
                   width: "100%",
-                  height: "200px",
+                  height: "300px",
+                  backgroundPosition: 'center center',
                   backgroundSize: "cover",
                 }}
               ></div>
@@ -301,12 +313,13 @@ const GreenEarth = () => {
               </p>
             </div>
 
-            <div className="col-md-3 mb-3">
+            <div className="col-md-4 mb-3">
               <div
                 style={{
                   backgroundImage: `url(${pic13})`,
                   width: "100%",
-                  height: "200px",
+                  height: "300px",
+                  backgroundPosition: 'center center',
                   backgroundSize: "cover",
                 }}
               ></div>
@@ -319,18 +332,24 @@ const GreenEarth = () => {
             </div>
           </div>
 
-          <p>List of some Dignitaries:</p>
-          <ul>
+          <p>
+            <b>
+            Other Confirmed Dignitaries:
+            </b>
+          </p>
+          <ul style={{
+            fontSize: '1.2rem'
+          }}>
             <li>Governors and first ladies of 36 states</li>
-            <li>First ladies of west Africa Countries</li>
-            <li>Committee of Vice Chancellor</li>
+            <li>First ladies of West Africa Countries</li>
+            <li>Committee of Vice Chancellors</li>
             <li>Dangote Foundation </li>
             <li>Bua Foundation </li>
             <li>Ministry of Education </li>
             <li>Tony Elumelu Foundation </li>
             <li>Senate President </li>
-            <li>Chairman Airspace </li>
-            <li>A. A RANO</li>
+            <li>Chairman AirPeace</li>
+            <li>AARano Group</li>
           </ul>
 
           <h6
