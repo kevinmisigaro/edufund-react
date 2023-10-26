@@ -408,7 +408,7 @@ const GreenEarth = () => {
 
           <ul>
             <li>
-              Standard - £1,500
+              Standard - £1,000
               <ul>
                 <li>Exhibition booth</li>
                 <li>
@@ -418,7 +418,7 @@ const GreenEarth = () => {
               </ul>
             </li>
             <li>
-              Enhanced - £2,500
+              Enhanced - £2,000
               <ul>
                 <li>Exhibition booth</li>
                 <li>Elevator pitch to dignitaries</li>
