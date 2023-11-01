@@ -15,6 +15,7 @@ import pic10 from "../../assets/img/dig/pic10.png";
 import pic11 from "../../assets/img/dig/pic11.png";
 import pic12 from "../../assets/img/dig/pic12.png";
 import pic13 from "../../assets/img/dig/pic13.png";
+import yusuf from "../../assets/img/dig/yusufmata.png";
 
 const GreenEarth = () => {
   return (
@@ -31,12 +32,12 @@ const GreenEarth = () => {
       >
         <div className="container" style={{ paddingTop: "6rem" }}>
           <h3 style={{ fontWeight: "bold" }}>
-            OPPORTUNITY FAIR AND EDUCATION STAKEHOLDER FORUM
+            {"Government Scholarship Opportunity Fair and Stakeholder Forum".toUpperCase()}
           </h3>
           <p className="mt-4">
             Strictly by Invitation <br />
-            GreenEarth Academy and the Africa Education Group invites you to our
-            inaugural scholarships powered by EduFund
+            GreenEarth Academy invites you to the launch of our inaugural
+            scholarships powered by EduFund.
           </p>
         </div>
       </div>
@@ -47,13 +48,141 @@ const GreenEarth = () => {
           }}
         >
           <p>
-            A unique and exclusive opportunity for UK institutions to
-            participate in the launch of our inaugural scholarships and to
-            engage with key stakeholders including vice-chancellors and West
-            African First Ladies.
+            Join us in Abuja for two days of celebration, networking and
+            business possibilities including an opportunity fair and
+            complimentary invitation to a special investiture for First Ladies
+            from across West Africa.
           </p>
 
           <div>
+            <p>
+              <b>Scholarships Briefing Meeting</b>
+            </p>
+
+            <p>When: 2 November 2023</p>
+
+            <p>Where: 4-5pm</p>
+
+            <p>
+              Location: Please register for free on{" "}
+              <a
+                href="https://us06web.zoom.us/meeting/register/tZUvf-CpqTsjEtaNSkrEqxqidNWMC8q94iBS#/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Zoom
+              </a>
+            </p>
+
+            <p>
+              Find out more and prepare in advance for the Opportunity Fair and
+              Education Stakeholder Forum. Register for our free pre-event
+              briefing to hear from selected government funding bodies
+              sponsoring students to UK universities in 2024.
+            </p>
+
+            <div className="d-flex flex-row my-5 gap-5">
+              <div>
+                <img src={yusuf} alt="yusuf" /> 
+              </div>
+              <div>
+                <p>
+                <i>
+                  "From Kano to the world stage - our scholarship scheme is a testament to the limitless potential of our youth. Join us with EduFund in celebrating the launch of a brighter future for Kano State students.""
+                  </i> - Dr. Yusuf Kofar Mata, Hon. Commissioner Ministry of Higher Education, Kano State
+                </p>
+              </div>
+            </div>
+
+            <table className="customers">
+              <tr>
+                <th>Time</th>
+                <th>Speakers</th>
+                <th>Description</th>
+              </tr>
+              <tr>
+                <td>4-4.05pm</td>
+                <td>Mercy Gilbert (moderator)</td>
+                <td>Introductions</td>
+              </tr>
+              <tr>
+                <td>4.05- 4.15pm</td>
+                <td>Professor Harriet Chimezie</td>
+                <td>Overview of the Opportunity Fair and Awards event</td>
+              </tr>
+              <tr>
+                <td>4.15- 4.20pm</td>
+                <td>Tosin Adebisi, Independent Consultant, EduFund</td>
+                <td>Working with Edufund and sponsors</td>
+              </tr>
+              <tr>
+                <td>4.20- 4.30pm</td>
+                <td>
+                  Dr. Yusuf Kofar Mata - Hon. Commissioner Ministry of Higher
+                  Education, Kano State
+                </td>
+                <td>Overview of Kano State Scholarships</td>
+              </tr>
+              <tr>
+                <td>4.30-4.35pm</td>
+                <td>
+                  Chidebere Okre- Representative of Prof Yakubu Ochefu,
+                  Secretary General of Committee of Vice Chancellor of Nigeria
+                  (CVC)
+                </td>
+                <td>Overview of CVC scholarships</td>
+              </tr>
+              <tr>
+                <td>4.35- 4.40pm</td>
+                <td>
+                  Hon Abdulsalam Ahmed- Representative Osun state Government
+                </td>
+                <td>Overview of Osun State Scholarships</td>
+              </tr>
+              <tr>
+                <td>4.40- 4.45pm</td>
+                <td>
+                  Prof.Morris Azuibike- Representative of Rivers State
+                  Commissioner of Higher Education
+                </td>
+                <td>Overview of Rivers State Scholarships</td>
+              </tr>
+              <tr>
+                <td>4.45- 4.55pm</td>
+                <td>Mercy Gilbert</td>
+                <td>Q&A</td>
+              </tr>
+              <tr>
+                <td>4.55-5pm</td>
+                <td>Gbenga Ogunbode, Consultant, The Africa Education Group</td>
+                <td>Closing address</td>
+              </tr>
+            </table>
+
+            <p>How do I register interest?</p>
+
+            <h4
+              style={{
+                marginBottom: "2rem",
+                marginTop: "2rem",
+              }}
+            >
+              Scholarships Opportunity Fair and Stakeholder Forum
+            </h4>
+
+            <p>
+              Register to exhibit your brand, meet prospective students and
+              network with key stakeholders.
+            </p>
+
+            <p>
+              The Opportunity Fair and Education Stakeholder Forum is a unique
+              and exclusive opportunity for UK institutions to participate in
+              the launch of our inaugural scholarships and to engage with key
+              stakeholders including vice-chancellors and West African First
+              Ladies.
+            </p>
+
             <p>
               <span
                 style={{
@@ -103,7 +232,7 @@ const GreenEarth = () => {
                   backgroundImage: `url(${pic1})`,
                   width: "100%",
                   height: "300px",
-                  backgroundPosition: 'center center',
+                  backgroundPosition: "center center",
                   backgroundSize: "cover",
                 }}
               ></div>
@@ -120,7 +249,7 @@ const GreenEarth = () => {
                   backgroundImage: `url(${pic2})`,
                   width: "100%",
                   height: "300px",
-                  backgroundPosition: 'center center',
+                  backgroundPosition: "center center",
                   backgroundSize: "cover",
                 }}
               ></div>
@@ -139,7 +268,7 @@ const GreenEarth = () => {
                   backgroundImage: `url(${pic3})`,
                   width: "100%",
                   height: "300px",
-                  backgroundPosition: 'center center',
+                  backgroundPosition: "center center",
                   backgroundSize: "cover",
                 }}
               ></div>
@@ -157,7 +286,7 @@ const GreenEarth = () => {
                   backgroundImage: `url(${pic4})`,
                   width: "100%",
                   height: "300px",
-                  backgroundPosition: 'center center',
+                  backgroundPosition: "center center",
                   backgroundSize: "cover",
                 }}
               ></div>
@@ -175,7 +304,7 @@ const GreenEarth = () => {
                   backgroundImage: `url(${pic5})`,
                   width: "100%",
                   height: "300px",
-                  backgroundPosition: 'center center',
+                  backgroundPosition: "center center",
                   backgroundSize: "cover",
                 }}
               ></div>
@@ -193,7 +322,7 @@ const GreenEarth = () => {
                   backgroundImage: `url(${pic6})`,
                   width: "100%",
                   height: "300px",
-                  backgroundPosition: 'center center',
+                  backgroundPosition: "center center",
                   backgroundSize: "cover",
                 }}
               ></div>
@@ -211,7 +340,7 @@ const GreenEarth = () => {
                   backgroundImage: `url(${pic7})`,
                   width: "100%",
                   height: "300px",
-                  backgroundPosition: 'center center',
+                  backgroundPosition: "center center",
                   backgroundSize: "cover",
                 }}
               ></div>
@@ -229,7 +358,7 @@ const GreenEarth = () => {
                   backgroundImage: `url(${pic8})`,
                   width: "100%",
                   height: "300px",
-                  backgroundPosition: 'center center',
+                  backgroundPosition: "center center",
                   backgroundSize: "cover",
                 }}
               ></div>
@@ -247,7 +376,7 @@ const GreenEarth = () => {
                   backgroundImage: `url(${pic9})`,
                   width: "100%",
                   height: "300px",
-                  backgroundPosition: 'center center',
+                  backgroundPosition: "center center",
                   backgroundSize: "cover",
                 }}
               ></div>
@@ -265,7 +394,7 @@ const GreenEarth = () => {
                   backgroundImage: `url(${pic10})`,
                   width: "100%",
                   height: "300px",
-                  backgroundPosition: 'center center',
+                  backgroundPosition: "center center",
                   backgroundSize: "cover",
                 }}
               ></div>
@@ -283,7 +412,7 @@ const GreenEarth = () => {
                   backgroundImage: `url(${pic11})`,
                   width: "100%",
                   height: "300px",
-                  backgroundPosition: 'center center',
+                  backgroundPosition: "center center",
                   backgroundSize: "cover",
                 }}
               ></div>
@@ -301,7 +430,7 @@ const GreenEarth = () => {
                   backgroundImage: `url(${pic12})`,
                   width: "100%",
                   height: "300px",
-                  backgroundPosition: 'center center',
+                  backgroundPosition: "center center",
                   backgroundSize: "cover",
                 }}
               ></div>
@@ -319,7 +448,7 @@ const GreenEarth = () => {
                   backgroundImage: `url(${pic13})`,
                   width: "100%",
                   height: "300px",
-                  backgroundPosition: 'center center',
+                  backgroundPosition: "center center",
                   backgroundSize: "cover",
                 }}
               ></div>
@@ -333,13 +462,13 @@ const GreenEarth = () => {
           </div>
 
           <p>
-            <b>
-            Other Confirmed Dignitaries:
-            </b>
+            <b>Other Confirmed Dignitaries:</b>
           </p>
-          <ul style={{
-            fontSize: '1.2rem'
-          }}>
+          <ul
+            style={{
+              fontSize: "1.2rem",
+            }}
+          >
             <li>Governors and first ladies of 36 states</li>
             <li>First ladies of West Africa Countries</li>
             <li>Committee of Vice Chancellors</li>
@@ -386,7 +515,7 @@ const GreenEarth = () => {
               STAND:
               <br />
             </span>{" "}
-            20 spaces available on first-come-first-serve basis. Please{" "}
+            10 spaces available on first-come-first-serve basis. Please{" "}
             <a
               href="https://forms.gle/7LPartEGJFVJEgHf6"
               target="_blank"
@@ -414,7 +543,9 @@ const GreenEarth = () => {
                 <li>
                   Access to Investiture on 18<sup>th</sup> November
                 </li>
-                <li>Access to Edufund scholarships information session</li>
+                <li>
+                  Access to Edufund engagement forum with scholarship boards
+                </li>
               </ul>
             </li>
             <li>
@@ -425,7 +556,9 @@ const GreenEarth = () => {
                 <li>
                   Access to Investiture on 18<sup>th</sup> November
                 </li>
-                <li>Access to Edufund scholarships information session</li>
+                <li>
+                  Access to Edufund engagement forum with scholarship boards
+                </li>
               </ul>
             </li>
             <li>
@@ -438,6 +571,7 @@ const GreenEarth = () => {
                 </li>
                 <li>Access to Edufund scholarships information session</li>
                 <li>Sponsorship of networking corner</li>
+                <li>1-1 exploratory meeting with a scholarship board</li>
               </ul>
             </li>
           </ul>
@@ -452,7 +586,8 @@ const GreenEarth = () => {
           </a>
 
           <p>
-            For any inquiries, please contact us at <u>partnerships@edufunds.co</u>
+            For any inquiries, please contact us at{" "}
+            <u>partnerships@edufunds.co</u>
           </p>
         </div>
       </div>

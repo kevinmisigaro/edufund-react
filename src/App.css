@@ -36,3 +36,20 @@
     transform: rotate(360deg);
   }
 }
+
+.customers td, .customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.customers{
+  margin-bottom: 2rem;
+}
+
+.customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #9a9999;
+  color: white;
+}
