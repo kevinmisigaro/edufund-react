@@ -16,6 +16,7 @@ import pic11 from "../../assets/img/dig/pic11.png";
 import pic12 from "../../assets/img/dig/pic12.png";
 import pic13 from "../../assets/img/dig/pic13.png";
 import yusuf from "../../assets/img/dig/yusufmata.png";
+import inagural from "../../assets/img/dig/inaugural.jpeg"
 
 const GreenEarth = () => {
   return (
@@ -460,6 +461,9 @@ const GreenEarth = () => {
               </p>
             </div>
           </div>
+
+
+          <img src={inagural} alt="" className="img-fluid mb-5" />
 
           <p>
             <b>Other Confirmed Dignitaries:</b>
