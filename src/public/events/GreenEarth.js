@@ -62,7 +62,7 @@ const GreenEarth = () => {
 
             <p>When: 2 November 2023</p>
 
-            <p>Where: 4-5pm</p>
+            <p>Where: 4-5pm UK time (5-6pm Nigeria)</p>
 
             <p>
               Location: Please register for free on{" "}
@@ -455,9 +455,11 @@ const GreenEarth = () => {
               ></div>
               <p className="text-center">
                 Her Excellency <br />
-                Rebecca Naa Okaikor Akufo-Addo
+                Auxillia Mnangagwa
                 <br />
-                <b>First Lady of Ghana</b>
+                <b>
+                First Lady of Zimbabwe
+                </b>
               </p>
             </div>
           </div>
