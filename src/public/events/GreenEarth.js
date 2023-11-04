@@ -578,6 +578,9 @@ const GreenEarth = () => {
                 <li>Access to Edufund scholarships information session</li>
                 <li>Sponsorship of networking corner</li>
                 <li>1-1 exploratory meeting with a scholarship board</li>
+                <li>
+                Complimentary feature in EduFund Scholarships Brochure for students,  sponsors and education stakeholders in West Africa
+                </li>
               </ul>
             </li>
           </ul>
