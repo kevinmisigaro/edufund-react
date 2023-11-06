@@ -16,7 +16,7 @@ import pic11 from "../../assets/img/dig/pic11.png";
 import pic12 from "../../assets/img/dig/pic12.png";
 import pic13 from "../../assets/img/dig/pic13.png";
 import yusuf from "../../assets/img/dig/yusufmata.png";
-import inagural from "../../assets/img/dig/inaugural.jpeg"
+import inagural from "../../assets/img/dig/inaugural.jpeg";
 
 const GreenEarth = () => {
   return (
@@ -84,13 +84,18 @@ const GreenEarth = () => {
 
             <div className="d-flex flex-row my-5 gap-5">
               <div>
-                <img src={yusuf} alt="yusuf" /> 
+                <img src={yusuf} alt="yusuf" />
               </div>
               <div>
                 <p>
-                <i>
-                  "From Kano to the world stage - our scholarship scheme is a testament to the limitless potential of our youth. Join us with EduFund in celebrating the launch of a brighter future for Kano State students.""
-                  </i> - Dr. Yusuf Kofar Mata, Hon. Commissioner Ministry of Higher Education, Kano State
+                  <i>
+                    "From Kano to the world stage - our scholarship scheme is a
+                    testament to the limitless potential of our youth. Join us
+                    with EduFund in celebrating the launch of a brighter future
+                    for Kano State students.""
+                  </i>{" "}
+                  - Dr. Yusuf Kofar Mata, Hon. Commissioner Ministry of Higher
+                  Education, Kano State
                 </p>
               </div>
             </div>
@@ -457,13 +462,10 @@ const GreenEarth = () => {
                 Her Excellency <br />
                 Auxillia Mnangagwa
                 <br />
-                <b>
-                First Lady of Zimbabwe
-                </b>
+                <b>First Lady of Zimbabwe</b>
               </p>
             </div>
           </div>
-
 
           <img src={inagural} alt="" className="img-fluid mb-5" />
 
@@ -543,6 +545,15 @@ const GreenEarth = () => {
 
           <ul>
             <li>
+              Exposure - £500
+              <ul>
+                <li>
+                  Feature in EduFund Scholarships Brochure for students,
+                  sponsors and education stakeholders in West Africa
+                </li>
+              </ul>
+            </li>
+            <li>
               Standard - £1,000
               <ul>
                 <li>Exhibition booth</li>
@@ -579,7 +590,8 @@ const GreenEarth = () => {
                 <li>Sponsorship of networking corner</li>
                 <li>1-1 exploratory meeting with a scholarship board</li>
                 <li>
-                Complimentary feature in EduFund Scholarships Brochure for students,  sponsors and education stakeholders in West Africa
+                  Complimentary feature in EduFund Scholarships Brochure for
+                  students, sponsors and education stakeholders in West Africa
                 </li>
               </ul>
             </li>
