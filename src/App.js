@@ -28,11 +28,11 @@ function App() {
     <Provider>
       <div className="App">
       <Routes>
-        <Route path='/' element={<Landing/>} />
+        <Route path='/landing' element={<Landing/>} />
         <Route path="/students" element={<Students/>} />
         <Route path="/donors" element={<Donors/>} />
         <Route path="/about" element={<AboutUs />} />
-        <Route path="/events" element={<Events />} />
+        <Route path="/" element={<Events />} />
         <Route path='/login' element={<Login/>} />
         <Route path='/register' element={<Register/>} />
         <Route path='fundraiser/:id' element={<FundraiserDetails/>} />

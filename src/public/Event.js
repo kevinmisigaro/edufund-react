@@ -1,6 +1,5 @@
 import React from "react";
 import bg from "../assets/img/students-standing-40.png";
-import NavigationBar from "./components/NavigationBar";
 import Footer from "./Footer";
 import EventCard from "./components/EventCard";
 import greenImg from "../assets/img/greenearth2.jpeg";
@@ -8,7 +7,7 @@ import greenImg from "../assets/img/greenearth2.jpeg";
 export default function Events() {
   return (
     <>
-      <NavigationBar />
+      {/* <NavigationBar /> */}
       <div
         className="container-fluid text-white"
         style={{

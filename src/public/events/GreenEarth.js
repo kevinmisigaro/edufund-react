@@ -21,7 +21,7 @@ import inagural from "../../assets/img/dig/inaugural.jpeg";
 const GreenEarth = () => {
   return (
     <>
-      <NavigationBar />
+      {/* <NavigationBar /> */}
       <div
         className="container-fluid text-white"
         style={{
